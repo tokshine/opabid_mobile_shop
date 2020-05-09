@@ -1,0 +1,168 @@
+
+
+**Design guidelines for each platform ???
+** azure mobile  services
+** microservices ??
+
+You can store and retrieve data locally using sqlite
+
+
+A Comprehensive Guide To Mobile App Design
+https://www.smashingmagazine.com/2018/02/comprehensive-guide-to-mobile-app-design/
+
+“10 Do’s and Don’ts of Mobile UX Design
+https://xd.adobe.com/ideas/principles/app-design/11-screens-youll-find-many-successful-mobile-apps/
+
+It’s also important to note that all hybrid app development frameworks, including Ionic, allow access to native device functionality like 
+the camera, biometrics, geolocation, and offline storage.
+
+https://ionicframework.com/resources/articles/ionic-vs-react-native-a-comparison-guide
+Hybrid native vs hybrid web eg.react native vs ionic
+
+
+good guide for an ecommerce website on cake ,works on mobile using media queries
+https://www.tcakeshop.co.uk/
+
+Naija
+http://www.techtrendsng.com/category/events/
+
+https://cfamedia.ng/
+
+Gill Cleeren
+
+Essential UI Kit -  Syncfusion 
+https://www.youtube.com/watch?v=AugZail5aBY
+
+
+FinTech
+
+
+https://edungr.com/classroom/past-questions
+
+
+
+https://zestmade.com/blog/how-mobile-apps-make-money/
+
+How mobile apps make money
+
+    1.Ads
+   2. In-app purchases:
+	 In-app purchases allow developers to provide their applications for free.
+	 In-app purchasing refers to the buying of goods and services from inside an application on a mobile device
+	 for example amaazon mobile app ;items from within the app you pay for.
+    3.Premium apps
+   4.Cross-promotion:
+	Cross promotion is an app marketing strategy in which app developers promote one of their titles on another one of their titles
+	
+https://github.com/xamarinuniversity
+
+https://github.com/idenardi/XamarinUniversity-CertificationProgress
+
+
+https://docs.microsoft.com/en-us/learn/browse/?resource_type=module&products=xamarin
+
+yahoomail.com
+VokeIfe2020
+
+
+
+Todo
+Come up with a pricing model on  mobile app
+Analyse https://www.businessofapps.com/app-developers/research/app-development-cost/#2
+
+
+Finish Angular lecture -DONE
+Run all react apps from the book-DONE
+on the back setting up react apps ,then create a language helper app - DONE  create an asp.net core instead
+xamarin apps  - get more stuff www.snowball.be
+1.Quiz app(text only for now) ibukun for graphic(dvla driver app)
+2.Ecommerce for biyi - http://opabidfarms.com/ notes getting more images -- view-source:https://opabidfarms.com/img/about/
+3.Medical app.(funmibi)
+4.Migrating Football league iconic app
+5.Voke music app
+6.Naija weather
+7.Agric app(Ope friend)
+Azure mobile app services???
+
+Design principle
+Repository layer uses domain entities 
+(it is not really a good idea to use data model in your repository layer as the layer is meant to combine data ,this could be from database  and api)
+service layer uses same entities
+
+Building an Enterprise Mobile Application with Xamarin.Forms
+https://app.pluralsight.com/library/courses/xamarin-forms-enterprise-mobile-application/table-of-contents
+
+Building Xamarin.Forms Applications with XAML
+https://app.pluralsight.com/library/courses/xamarin-forms-applications-xaml/table-of-contents
+
+Tools for xamarin development
+on pc
+visual studio 2017 
+emulator or device
+
+on mac
+visual studio 2017 for mac
+emulator or device
+
+declarative code
+Cross platform project type option in visual studio is Xamarin.Forms 
+
+
+
+ISSUES 
+this emulator does not have hardware acceleration enabled xamarin
+https://stackoverflow.com/questions/18346430/xamarin-android-how-to-rebuild-resource-designer-cs
+1.Click Resource.designer.cs file from your project.
+2.Click CTRL+A (Select All)
+3.Click Del (Delete all)
+4.Clean and Rebuild your project(if you get message for modified Resource.designer.cs click "Yes to All" button).
+you are now get error for first buildings. but your Resource.designer.cs file is regenerated.you can now second build. its works.
+
+
+
+https://getandroidemulator.com/
+
+
+maybe for design 
+https://dribbble.com/shots/popular/mobile
+
+microsoft xamarin courses
+https://docs.microsoft.com/en-us/learn/browse/?term=xamarin
+
+Xamarin Android: Learn to Build Native Android Apps With C# 
+https://github.com/theuchenna
+
+has mobile app
+weather app
+uber-driver
+uber-rider
+quiz-app
+
+Task without async keyword
+https://riptutorial.com/csharp/example/16320/returning-a-task-without-await
+
+
+C:\Users\BytesIntel\Downloads\xamarin-forms-enterprise-mobile-application\04\demos\Demos\BethanysPieShop.Mobile.Databinding --basic testing on databinding
+
+C:\Users\BytesIntel\Downloads\xamarin-forms-enterprise-mobile-application\03\demos\Demos\BethanysPieShop.Mobile
+
+
+
+
+Shivonet.MobileShop
+
+Bethany
+
+ Opabid Farms
+ 
+ bethanylogowithborder
+ 
+ 
+ --can create db and apply schema changes
+ dotnet ef database update
+ 
+ icons 256px x 256px
+ 
+ //to create a logo
+ https://logomakr.com/93TOaG
+ https://pngtree.com/so/phone-icon
