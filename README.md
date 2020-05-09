@@ -1,0 +1,1 @@
+# opabid_mobile_shop
