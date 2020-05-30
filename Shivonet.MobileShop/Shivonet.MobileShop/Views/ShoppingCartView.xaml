@@ -50,6 +50,9 @@
                                     <ColumnDefinition Width="50"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Row="0" Grid.RowSpan="2" HeightRequest="80" WidthRequest="100" VerticalOptions="Start" Margin="2,2,1,2" Source="{Binding Product.ImageUrl}"></Image>
+
+                                
+
                                 <Label Grid.Row="0" Grid.Column="1" Text="{Binding Product.Name}" Margin="3" Style="{StaticResource ProductTileNameStyle}"></Label>
                                 <Label Grid.Row="0" Grid.Column="2"  Margin="3" Text="{Binding Product.Price, Converter={StaticResource LocalCurrencyConverter}}" Style="{StaticResource ProductTilePriceStyle}" HorizontalTextAlignment="End"></Label>
                                 <Label Grid.Column="1" Grid.Row="1" Margin="3" Grid.ColumnSpan="2" Text="{Binding Product.ShortDescription}" Style="{StaticResource ProductTileDescriptionStyle}"></Label>
@@ -62,13 +65,19 @@
                                         <ColumnDefinition></ColumnDefinition>
                                         <ColumnDefinition></ColumnDefinition>
                                         <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <Label Text="Quantity" Grid.Row="0" Grid.Column="0" Style="{StaticResource ShoppingCartTileSmallHeaderStyle}"></Label>
-                                    <Label Text="Price/product" Grid.Row="0" Grid.Column="1" Style="{StaticResource ShoppingCartTileSmallHeaderStyle}"></Label>
-                                    <Label Text="Line total" Grid.Row="0" Grid.Column="2" Style="{StaticResource ShoppingCartTileSmallHeaderStyle}"></Label>
-                                    <Label Text="{Binding Quantity}" Grid.Row="1" Grid.Column="0" Style="{StaticResource ShoppingCartTileSmallStyle}"></Label>
-                                    <Label Text="{Binding Product.Price, Converter={StaticResource LocalCurrencyConverter}}" Grid.Row="1" Grid.Column="1" Style="{StaticResource ShoppingCartTileSmallStyle}"></Label>
-                                    <Label Text="{Binding Total, Converter={StaticResource LocalCurrencyConverter}}" Grid.Row="1" Grid.Column="2" Style="{StaticResource ShoppingCartTileSmallStyle}"></Label>
+
+
+
+                                    <Image Source="removeicon.png"  Grid.Row="1"  Grid.Column="0" WidthRequest="30" HeightRequest="30" VerticalOptions="Center" ></Image>
+
+                                    <Label Text="Quantity" Grid.Row="0" Grid.Column="1" Style="{StaticResource ShoppingCartTileSmallHeaderStyle}"></Label>
+                                    <Label Text="Price/product" Grid.Row="0" Grid.Column="2" Style="{StaticResource ShoppingCartTileSmallHeaderStyle}"></Label>
+                                    <Label Text="Line total" Grid.Row="0" Grid.Column="3" Style="{StaticResource ShoppingCartTileSmallHeaderStyle}"></Label>
+                                    <Label Text="{Binding Quantity}" Grid.Row="1" Grid.Column="1" Style="{StaticResource ShoppingCartTileSmallStyle}"></Label>
+                                    <Label Text="{Binding Product.Price, Converter={StaticResource LocalCurrencyConverter}}" Grid.Row="1" Grid.Column="2" Style="{StaticResource ShoppingCartTileSmallStyle}"></Label>
+                                    <Label Text="{Binding Total, Converter={StaticResource LocalCurrencyConverter}}" Grid.Row="1" Grid.Column="3" Style="{StaticResource ShoppingCartTileSmallStyle}"></Label>
                                 </Grid>
                             </Grid>
                         </ViewCell>
@@ -77,7 +86,8 @@
                 <ListView.FooterTemplate>
                     <DataTemplate>
                         <Grid RowSpacing="0" Margin="3, 0" >
-                            <Grid.RowDefinitions>
+                           <!--todo this does not make sense to me--> 
+                            <Grid.RowDefinitions> 
                                 <RowDefinition Height="6*"></RowDefinition>
                             </Grid.RowDefinitions>
                             <Grid BackgroundColor="White" IsVisible="{Binding ShoppingCartItems.Count, Converter={StaticResource LocalCountToVisibilityConverter}, ConverterParameter=True}">

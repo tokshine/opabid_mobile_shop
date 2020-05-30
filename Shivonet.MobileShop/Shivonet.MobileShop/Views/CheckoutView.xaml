@@ -34,10 +34,10 @@
             <Label Grid.Row="2" Grid.Column="0" Text="Number" VerticalOptions="Center"></Label>
             <Label Grid.Row="3" Grid.Column="0" Text="Zipcode" VerticalOptions="Center"></Label>
             <Label Grid.Row="4" Grid.Column="0" Text="City" VerticalOptions="Center"></Label>
-            <Entry Grid.Row="1" Grid.Column="1" Text="{Binding Address.Street}" Style="{StaticResource CheckoutEntryStyle}"></Entry>
-            <Entry Grid.Row="2" Grid.Column="1" Text="{Binding Address.Number}" Style="{StaticResource CheckoutEntryStyle}"></Entry>
-            <Entry Grid.Row="3" Grid.Column="1" Text="{Binding Address.ZipCode}" Style="{StaticResource CheckoutEntryStyle}"></Entry>
-            <Entry Grid.Row="4" Grid.Column="1" Text="{Binding Address.City}" Style="{StaticResource CheckoutEntryStyle}"></Entry>
+            <Entry Grid.Row="1" Grid.Column="1" Text="{Binding Order.Address.Street}" Style="{StaticResource CheckoutEntryStyle}"></Entry>
+            <Entry Grid.Row="2" Grid.Column="1" Text="{Binding Order.Address.Number}" Style="{StaticResource CheckoutEntryStyle}"></Entry>
+            <Entry Grid.Row="3" Grid.Column="1" Text="{Binding Order.Address.ZipCode}" Style="{StaticResource CheckoutEntryStyle}"></Entry>
+            <Entry Grid.Row="4" Grid.Column="1" Text="{Binding Order.Address.City}" Style="{StaticResource CheckoutEntryStyle}"></Entry>
             <Button Text="Checkout now" Style="{StaticResource RegularButton}" Command="{Binding PlaceOrderCommand}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center"></Button>
         </Grid>
         <Grid>

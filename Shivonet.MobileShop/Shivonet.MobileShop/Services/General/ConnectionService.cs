@@ -8,6 +8,7 @@ namespace Shivonet.MobileShop.Core.Services.General
     {
         private readonly IConnectivity _connectivity;
 
+        //is this checking for internet connectivity
         public ConnectionService()
         {
             _connectivity = CrossConnectivity.Current;

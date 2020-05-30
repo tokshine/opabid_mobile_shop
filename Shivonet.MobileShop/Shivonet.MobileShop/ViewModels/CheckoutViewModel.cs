@@ -14,6 +14,7 @@ namespace Shivonet.MobileShop.Core.ViewModels
         private readonly IOrderDataService _orderDataService;
         private readonly ISettingsService _settingsService;
         private Order _order;
+       // private Address _address;
 
         public CheckoutViewModel(IConnectionService connectionService, 
             INavigationService navigationService, IDialogService dialogService, 
@@ -38,8 +39,10 @@ namespace Shivonet.MobileShop.Core.ViewModels
 
         public override Task InitializeAsync(object data)
         {
-            Order = new Order { OrderId = Guid.NewGuid().ToString(), Address = new Address(), UserId = _settingsService.UserIdSetting };
+            Order = new Order { OrderId = Guid.NewGuid().ToString(),Address = new Address(),
+                UserId = _settingsService.UserIdSetting ,OrderTotal = (decimal)data};
 
+            //dont i thnk this line is necessary could be replaced by return Task.FromResult(order)
             return base.InitializeAsync(data);
         }
 

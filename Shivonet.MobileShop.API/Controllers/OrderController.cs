@@ -20,11 +20,19 @@ namespace Shivonet.MobileShop.API.Controllers
         // GET: /<controller>/
         public IActionResult Add([FromBody]Order order)
         {
-            //handling of order not fully implemented in this demo
+            
             var shoppingCart = _appDbContext.ShoppingCarts.FirstOrDefault(s => s.UserId == order.UserId);
             var shoppingCartItemsToRemove =
                 _appDbContext.ShoppingCartItems.Where(s => s.ShoppingCartId == shoppingCart.ShoppingCartId);
-            _appDbContext.ShoppingCartItems.RemoveRange(shoppingCartItemsToRemove);
+
+            //handling of order not fully implemented in this demo
+            //todo create order details table to as a bridge btw order and products purchase
+            //orderdetails.Products = shoppingCartItemsToRemove.Select(x => x.Product).ToList();
+            //product property should not be on order table
+            //orderId property should not be on product table
+
+            _appDbContext.Orders.Add(order);
+            _appDbContext.ShoppingCartItems.RemoveRange(shoppingCartItemsToRemove);           
             _appDbContext.SaveChanges();
 
             return Ok(order);

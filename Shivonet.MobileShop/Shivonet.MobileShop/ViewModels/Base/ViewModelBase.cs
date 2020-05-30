@@ -41,7 +41,8 @@ namespace Shivonet.MobileShop.Core.ViewModels.Base
         }
 
         public virtual Task InitializeAsync(object data)
-        {
+        {   
+            //some investigation to do on use of initialize
             return Task.FromResult(false);
         }
     }

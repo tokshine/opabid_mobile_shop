@@ -33,7 +33,8 @@ namespace Shivonet.MobileShop.Core.ViewModels
         public override async Task InitializeAsync(object product)
         {
             //come back to this
-            SelectedProduct = (Product) product;
+            SelectedProduct = (Product) product;            
+            //return Task.FromResult(SelectedProduct);
         }
 
         private async void OnAddToCart()

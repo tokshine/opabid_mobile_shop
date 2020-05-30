@@ -86,7 +86,7 @@ namespace Shivonet.MobileShop.Core.ViewModels
 
         private void OnCheckOut()
         {
-            _navigationService.NavigateToAsync<CheckoutViewModel>();
+            _navigationService.NavigateToAsync<CheckoutViewModel>(GrandTotal);
         }
 
         private void OnOrderPlaced()

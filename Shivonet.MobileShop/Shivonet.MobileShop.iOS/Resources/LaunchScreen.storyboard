@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" image="bethanylogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="23">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" image="productlogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="23">
                                 <rect key="frame" x="270" y="270" width="112" height="113"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                             </imageView>
@@ -36,6 +36,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bethanylogo.png" width="280" height="279"/>
+        <image name="productlogo.png" width="280" height="279"/>
     </resources>
 </document>

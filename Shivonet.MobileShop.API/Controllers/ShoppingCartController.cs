@@ -26,8 +26,7 @@ namespace Shivonet.MobileShop.API.Controllers
             return shoppingCart == null ? Ok(new ShoppingCart()) : Ok(shoppingCart);
         }
 
-        [HttpPost]
-        // GET: /<controller>/
+        [HttpPost]        
         public IActionResult Add([FromBody]UserShoppingCartItem userShoppingCartItem)
         {
             var shoppingCart = _appDbContext.ShoppingCarts.FirstOrDefault(s => s.UserId == userShoppingCartItem.UserId);

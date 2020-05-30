@@ -77,6 +77,11 @@ on the back setting up react apps ,then create a language helper app - DONE  cre
 xamarin apps  - get more stuff www.snowball.be
 1.Quiz app(text only for now) ibukun for graphic(dvla driver app)
 2.Ecommerce for biyi - http://opabidfarms.com/ notes getting more images -- view-source:https://opabidfarms.com/img/about/
+Todo
+Add textbox for item quantity
+Add delete button to remove item from cart
+Validation ???
+
 3.Medical app.(funmibi)
 4.Migrating Football league iconic app
 5.Voke music app
@@ -84,18 +89,26 @@ xamarin apps  - get more stuff www.snowball.be
 7.Agric app(Ope friend)
 Azure mobile app services???
 
+
+todo syncfusion
+download images https://cdn.syncfusion.com/essential-ui-kit-for-xamarin.forms/common/uikitimages/";
+example https://cdn.syncfusion.com/essential-ui-kit-for-xamarin.forms/common/uikitimages/Ring3.png
+
+
 Design principle
 Repository layer uses domain entities 
 (it is not really a good idea to use data model in your repository layer as the layer is meant to combine data ,this could be from database  and api)
 service layer uses same entities
 
-Building an Enterprise Mobile Application with Xamarin.Forms
+Building an Enterprise Mobile Application with Xamarin.Forms - DONE
 https://app.pluralsight.com/library/courses/xamarin-forms-enterprise-mobile-application/table-of-contents
 
 Building Xamarin.Forms Applications with XAML
 https://app.pluralsight.com/library/courses/xamarin-forms-applications-xaml/table-of-contents
 
-Tools for xamarin development
+Integrating Google Maps into Xamarin.Forms Apps
+
+Tools for xamarin development - DONE
 on pc
 visual studio 2017 
 emulator or device
@@ -118,7 +131,10 @@ https://stackoverflow.com/questions/18346430/xamarin-android-how-to-rebuild-reso
 4.Clean and Rebuild your project(if you get message for modified Resource.designer.cs click "Yes to All" button).
 you are now get error for first buildings. but your Resource.designer.cs file is regenerated.you can now second build. its works.
 
+https://stackoverflow.com/questions/52131837/the-project-is-missing-android-sdks-required-for-building
 
+"java.exe" exited with code 2.	Android		xamarin
+https://forums.xamarin.com/discussion/147052/new-java-exe-exited-with-code-2-error
 
 https://getandroidemulator.com/
 
@@ -166,3 +182,33 @@ Bethany
  //to create a logo
  https://logomakr.com/93TOaG
  https://pngtree.com/so/phone-icon
+ 
+ https://techbleat.co.uk/
+ 
+ port 20650
+ 
+ 
+ sammyxamarin@outlook.com
+ 
+ Weekend2XAM$
+ 
+introducing App Center: Build, Test, Distribute and Monitor Apps in the Cloud
+Visual Studio App Center
+ https://devblogs.microsoft.com/appcenter/introducing-visual-studio-app-center/
+ 
+ https://www.syncfusion.com/essential-xamarin-ui-kit
+ 
+ https://github.com/jsuarezruiz/xamarin-forms-goodlooking-UI
+ 
+ https://github.com/syncfusion/essential-ui-kit-for-xamarin.forms
+ 
+ https://www.youtube.com/watch?v=AugZail5aBY
+ 
+ https://help.syncfusion.com/xamarin/uikit/xamarin-forms-ui-designs
+ 
+ xaml ui kit for xamarin.forms
+ 
+ https://marketplace.visualstudio.com/items?itemName=SyncfusionInc.Essential-UI-Kit-Xamarin-Forms
+ 
+ 
+    
