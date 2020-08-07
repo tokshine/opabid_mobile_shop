@@ -41,11 +41,16 @@ namespace Shivonet.MobileShop.Droid.Renderers
                 }
 
                 // Set padding for the internal text from border
-                Control.SetPadding(
-                    (int)DpToPixels(this.Context, Convert.ToSingle(3)),
-                    15,
-                    (int)DpToPixels(this.Context, Convert.ToSingle(3)),
-                    15);
+                //Control.SetPadding(
+                //    (int)DpToPixels(this.Context, Convert.ToSingle(3)),
+                //    15,
+                //    (int)DpToPixels(this.Context, Convert.ToSingle(3)),
+                //    15);
+
+                Control.SetPadding((int)DpToPixels(this.Context, Convert.ToSingle(12)), Control.PaddingTop, (int)DpToPixels(this.Context, Convert.ToSingle(12)),
+                   Control.PaddingBottom);
+
+
             }
         }
         public static float DpToPixels(Context context, float valueInDp)

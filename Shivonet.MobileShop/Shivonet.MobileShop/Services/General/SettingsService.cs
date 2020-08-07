@@ -22,7 +22,8 @@ namespace Shivonet.MobileShop.Core.Services.General
 
         public string GetItem(string key)
         {
-            return _settings.GetValueOrDefault(key, string.Empty);
+            var item= _settings.GetValueOrDefault(key, string.Empty);
+            return item;
         }
 
         public string UserNameSetting

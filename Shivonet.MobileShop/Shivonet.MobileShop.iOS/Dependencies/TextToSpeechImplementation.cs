@@ -13,6 +13,7 @@ namespace Shivonet.MobileShop.iOS.Dependencies
         public void ReadText(string text)
         {
             var speechSynthesizer = new AVSpeechSynthesizer();
+            //Voice = AVSpeechSynthesisVoice.FromLanguage("fr-FR")
             var speechUtterance = new AVSpeechUtterance(text)
             {
                 Rate = AVSpeechUtterance.MaximumSpeechRate / 4,

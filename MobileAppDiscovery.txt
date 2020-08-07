@@ -211,4 +211,19 @@ Visual Studio App Center
  https://marketplace.visualstudio.com/items?itemName=SyncfusionInc.Essential-UI-Kit-Xamarin-Forms
  
  
-    
+ Questions
+ 
+ Margin="15,0" 15 from left,0 bottom
+ Margin="0,15" 0 from left 15 bottom
+ 
+ Margin="0,16,0,16"  means 16 top,bottom 0 left ,right
+ rowSpacing="2"> this row must cover 2 colums
+ 
+ Wishlist and cart pages are under bookmark
+  detail- product detail Page
+  
+  
+ todo 
+ 1.validation
+ 2.Cart Page redesign
+ 3. Checkout /payment page 

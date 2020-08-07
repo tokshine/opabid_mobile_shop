@@ -45,7 +45,9 @@ namespace Shivonet.MobileShop.Core.ViewModels
 
         private void OnReadDescription()
         {
-            DependencyService.Get<ITextToSpeech>().ReadText(SelectedProduct.LongDescription);
+           DependencyService.Get<ITextToSpeech>().ReadText(SelectedProduct.LongDescription);
+
+           
         }
     }
 }

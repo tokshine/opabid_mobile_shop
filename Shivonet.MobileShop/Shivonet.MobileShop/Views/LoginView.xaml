@@ -10,26 +10,26 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="300"></RowDefinition>
+            <RowDefinition Height="500"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="350"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <AbsoluteLayout HorizontalOptions="FillAndExpand" HeightRequest="300" WidthRequest="200" Grid.Row="1" Grid.Column="1">
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" HeightRequest="500" WidthRequest="350" Grid.Row="1" Grid.Column="1">
             
             <Frame AbsoluteLayout.LayoutFlags="SizeProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1" 
                        BackgroundColor="White" HasShadow="true"
                        CornerRadius="10" Margin="0, 25, 0, 25"
                        >
                 <StackLayout Margin="0, 30">
-                    <Label Text="Sign in" Style="{StaticResource PageHeaderStyle}"></Label>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="Not a member? " Style="{StaticResource RegularStyle}"></Label>
-                        <Label Text="Register today!" Style="{StaticResource LinkStyle}">
+                    <Label Text="Sign in" Style="{StaticResource PageHeaderStyle}"  Margin="0,8"></Label>
+                    <StackLayout Orientation="Horizontal" Margin="15,0">
+                        <Label Text="Not a member? " Style="{StaticResource RegularStyle}" ></Label>
+                        <Label Text="Register today!" Style="{StaticResource LinkStyle}" >
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer            
                                         Command="{Binding RegisterCommand}"  
@@ -37,9 +37,9 @@
                             </Label.GestureRecognizers>
                         </Label>
                     </StackLayout>
-                    <controls:RoundedEntry Placeholder="User name" WidthRequest="100" Style="{StaticResource RoundedEntryStyle}" Text="{Binding UserName, Mode=TwoWay}"/>
-                    <controls:RoundedEntry IsPassword="True" Placeholder="Password" WidthRequest="100" Style="{StaticResource RoundedEntryStyle}" Text="{Binding Password, Mode=TwoWay}"/>
-                    <Button Style="{StaticResource RegularButton}" Text="Sign in" Command="{Binding LoginCommand}"></Button>
+                    <controls:RoundedEntry  Placeholder="User name" WidthRequest="100" Style="{StaticResource RoundedEntryStyle}" Text="{Binding UserName, Mode=TwoWay}"  Margin="0,16,0,16"  />
+                    <controls:RoundedEntry IsPassword="True" Placeholder="Password" WidthRequest="100" Style="{StaticResource RoundedEntryStyle}" Text="{Binding Password, Mode=TwoWay}"  Margin="0,16,0,16" />
+                    <Button Style="{StaticResource RegularButton}" Text="Sign in" Command="{Binding LoginCommand}"  Margin="0,16,0,16"></Button>
                 </StackLayout>
             </Frame>
             <Frame  AbsoluteLayout.LayoutFlags="PositionProportional" Padding="0,0,0,0" BackgroundColor="Transparent" BorderColor="Transparent"

@@ -36,8 +36,8 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Frame Margin="10" Padding="10" HeightRequest="200" >
-                            <Grid Margin="1" BackgroundColor="White" RowSpacing="0" HeightRequest="200" >
+                        <Frame Margin="10" Padding="10" HeightRequest="300" >
+                            <Grid Margin="1" BackgroundColor="White" RowSpacing="0" HeightRequest="300" >
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="6*"></RowDefinition>
                                     <RowDefinition Height="1*"></RowDefinition>
@@ -51,7 +51,7 @@
                                 <Image Grid.Row="0" Grid.ColumnSpan="2" Aspect="AspectFill" Source="{Binding ImageUrl}" HeightRequest="100" WidthRequest="100"></Image>
                                 <Label Grid.Row="1" Grid.Column="0" Text="{Binding Name}" Style="{StaticResource ProductTileNameStyle}"></Label>
                                 <Label Grid.Row="1" Grid.Column="1"  Text="{Binding Price, Converter={StaticResource LocalCurrencyConverter}}" Style="{StaticResource ProductTilePriceStyle}" HorizontalTextAlignment="End"></Label>
-                                <Label Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Text="{Binding ShortDescription}" Style="{StaticResource ProductTileDescriptionStyle}"></Label>
+                                <Label Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Text="{Binding ShortDescription}" Style="{StaticResource ProductTileDescriptionStyle}" ></Label>
                                 <Button Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Text="Add to cart" Style="{StaticResource RegularButton}" Command="{Binding Source={x:Reference HomeViewPage}, Path=BindingContext.AddToCartCommand}" CommandParameter="{Binding}"></Button>
                             </Grid>
                         </Frame>
