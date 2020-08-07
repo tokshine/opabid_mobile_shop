@@ -47,6 +47,8 @@ namespace Shivonet.MobileShop.Core.ViewModels
             }
         }
 
+
+
         private async void OnLogin()
         {
             IsBusy = true;

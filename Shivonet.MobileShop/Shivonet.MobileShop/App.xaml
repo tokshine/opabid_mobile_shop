@@ -171,7 +171,8 @@
                 <Setter Property="HorizontalOptions" Value="Start"></Setter>
             </Style>
 
-            <converters:ItemTappedConverter x:Key="LocalItemTappedConverter"></converters:ItemTappedConverter>
+          <converters:StringToBooleanConverter x:Key="StringToBooleanConverter"></converters:StringToBooleanConverter>
+          <converters:ItemTappedConverter x:Key="LocalItemTappedConverter"></converters:ItemTappedConverter>
             <converters:MenuIconConverter x:Key="LocalMenuIconConverter"></converters:MenuIconConverter>
             <converters:CurrencyConverter x:Key="LocalCurrencyConverter"></converters:CurrencyConverter>
             <converters:CountToVisibilityConverter x:Key="LocalCountToVisibilityConverter"></converters:CountToVisibilityConverter>

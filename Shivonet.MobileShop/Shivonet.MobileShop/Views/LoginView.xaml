@@ -37,7 +37,20 @@
                             </Label.GestureRecognizers>
                         </Label>
                     </StackLayout>
-                    <controls:RoundedEntry  Placeholder="User name" WidthRequest="100" Style="{StaticResource RoundedEntryStyle}" Text="{Binding UserName, Mode=TwoWay}"  Margin="0,16,0,16"  />
+                    <controls:RoundedEntry   x:Name="Email" Placeholder="User name" WidthRequest="100" Style="{StaticResource RoundedEntryStyle}" Text="{Binding UserName, Mode=TwoWay}"  Margin="0,16,0,16"  />
+                    
+                    <Label
+                x:Name="ValidationLabel"
+                Margin="15,-5,0,0"
+                FontSize="12"
+                IsVisible="{Binding Path=IsFocused, 
+                Source={x:Reference Email}, 
+                Converter={StaticResource StringToBooleanConverter}, 
+                ConverterParameter={x:Reference Email}}"
+                Text="Please enter a valid e-mail"
+                 TextColor="Red"
+                VerticalOptions="FillAndExpand" />
+
                     <controls:RoundedEntry IsPassword="True" Placeholder="Password" WidthRequest="100" Style="{StaticResource RoundedEntryStyle}" Text="{Binding Password, Mode=TwoWay}"  Margin="0,16,0,16" />
                     <Button Style="{StaticResource RegularButton}" Text="Sign in" Command="{Binding LoginCommand}"  Margin="0,16,0,16"></Button>
                 </StackLayout>

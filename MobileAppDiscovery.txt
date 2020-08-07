@@ -225,5 +225,7 @@ Visual Studio App Center
   
  todo 
  1.validation
+ others ways of doing validation
+ https://devblogs.microsoft.com/premier-developer/validate-input-in-xamarin-forms-using-inotifydataerrorinfo-custom-behaviors-effects-and-prism/
  2.Cart Page redesign
  3. Checkout /payment page 
