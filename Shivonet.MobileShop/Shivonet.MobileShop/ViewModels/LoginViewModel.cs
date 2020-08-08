@@ -1,4 +1,7 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.Runtime.CompilerServices;
+using System.Windows.Input;
 using Shivonet.MobileShop.Core.Contracts.Services.Data;
 using Shivonet.MobileShop.Core.Contracts.Services.General;
 using Shivonet.MobileShop.Core.ViewModels.Base;
@@ -27,14 +30,28 @@ namespace Shivonet.MobileShop.Core.ViewModels
         public ICommand LoginCommand => new Command(OnLogin);
         public ICommand RegisterCommand => new Command(OnRegister);
 
+        [Required(ErrorMessage = "Username cannot be empty!")]
+        [EmailAddress]
         public string UserName
         {
             get => _userName;
             set
             {
-                _userName = value;
-                OnPropertyChanged();
+                // _userName = value;
+                // OnPropertyChanged();
+                ValidateProperty(value);
+                SetProperty(ref _userName, value);
             }
+        }
+
+        bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
+        {
+            if (Object.Equals(storage, value))
+                return false;
+
+            storage = value;
+            OnPropertyChanged(propertyName);
+            return true;
         }
 
         public string Password
@@ -47,6 +64,21 @@ namespace Shivonet.MobileShop.Core.ViewModels
             }
         }
 
+
+        protected override void ValidateProperty(object value, [CallerMemberName] string propertyName = null)
+        {
+            base.ValidateProperty(value, propertyName);
+
+            OnPropertyChanged("IsSubmitEnabled");
+        }
+
+        public bool IsSubmitEnabled
+        {
+            get
+            {
+                return !HasErrors;
+            }
+        }
 
 
         private async void OnLogin()

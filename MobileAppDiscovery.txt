@@ -227,5 +227,12 @@ Visual Studio App Center
  1.validation
  others ways of doing validation
  https://devblogs.microsoft.com/premier-developer/validate-input-in-xamarin-forms-using-inotifydataerrorinfo-custom-behaviors-effects-and-prism/
+ BindableBase is used in my Prism project ,am using BindableObject instead
+ https://www.microsoftpressstore.com/articles/article.aspx?p=2254974&seqNum=5
+ 
  2.Cart Page redesign
- 3. Checkout /payment page 
+ 3. Checkout /payment page (after contact/delivery address)
+ 
+ 
+ 
+ 

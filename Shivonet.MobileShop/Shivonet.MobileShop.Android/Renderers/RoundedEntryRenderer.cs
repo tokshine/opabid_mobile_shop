@@ -30,11 +30,11 @@ namespace Shivonet.MobileShop.Droid.Renderers
 
                     // Thickness of the stroke line
                     gradientBackground.SetStroke(view.BorderWidth, view.BorderColor.ToAndroid());
-
+                   
                     // Radius for the curves
-                    gradientBackground.SetCornerRadius(
-                        DpToPixels(this.Context,
-                            Convert.ToSingle(view.CornerRadius)));
+                    gradientBackground.SetCornerRadius(DpToPixels(this.Context,
+                            Convert.ToSingle(view.CornerRadius))
+                        );
 
                     // set the background of the label
                     Control.SetBackground(gradientBackground);

@@ -3,10 +3,11 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Shivonet.MobileShop.Core.Annotations;
 using Shivonet.MobileShop.Core.Contracts.Services.General;
+using Shivonet.MobileShop.Core.Validation;
 
 namespace Shivonet.MobileShop.Core.ViewModels.Base
 {
-    public class ViewModelBase: INotifyPropertyChanged
+    public class ViewModelBase: ValidationBase,INotifyPropertyChanged
     {
         protected readonly IConnectionService _connectionService;
         protected readonly INavigationService _navigationService;
