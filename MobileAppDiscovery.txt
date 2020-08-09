@@ -222,7 +222,12 @@ Visual Studio App Center
  Wishlist and cart pages are under bookmark
   detail- product detail Page
   
-  
+ what's the use of these?
+  				        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="HorizontalOptions" Value="Start" />
+		
  todo 
  1.validation
  others ways of doing validation

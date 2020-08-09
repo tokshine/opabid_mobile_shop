@@ -32,8 +32,10 @@
                     <Label Grid.Row="0" Grid.Column="1" Margin="3" Text="{Binding SelectedProduct.Price, Converter={StaticResource LocalCurrencyConverter}}" Style="{StaticResource ProductTilePriceStyle}" HorizontalTextAlignment="End"></Label>
                     <Label Grid.Column="0" Grid.Row="1" Margin="3" Grid.ColumnSpan="2" Text="{Binding SelectedProduct.ShortDescription}" Style="{StaticResource ProductTileDescriptionStyle}"></Label>
                 </Grid>
-              
-                <Label Margin="5" Style="{StaticResource ProductLongDescriptionStyle}" Grid.Row="2" Text="{Binding SelectedProduct.LongDescription}"></Label>
+
+                <Label  Margin="15,5,8,5" Style="{StaticResource ProductLongDescriptionStyle}" Grid.Row="2" Text="{Binding SelectedProduct.LongDescription}"
+                    HorizontalTextAlignment="Start" VerticalTextAlignment="Center"   
+                        ></Label>
                 <Button Grid.Row="3" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,10,0" 
                         Text="Read description" Style="{StaticResource RegularButton}" Command="{Binding ReadDescriptionCommand}"></Button>
                 <Grid Grid.Row="4">

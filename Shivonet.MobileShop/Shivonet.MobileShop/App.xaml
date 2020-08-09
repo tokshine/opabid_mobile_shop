@@ -26,6 +26,13 @@
                 <On Platform="Android, UWP, WinRT, WinPhone" Value="16" />
             </OnPlatform>
 
+
+            <OnPlatform x:Key="ProductDetailSmallFontSize"
+                        x:TypeArguments="x:Double">
+                <On Platform="iOS" Value="14" />
+                <On Platform="Android, UWP, WinRT, WinPhone" Value="14" />
+            </OnPlatform>
+
             <OnPlatform x:Key="XSmallFontSize"
                         x:TypeArguments="x:Double">
                 <On Platform="iOS" Value="11" />
@@ -103,7 +110,7 @@
             </Style>
 
             <Style x:Key="ProductTileNameStyle" TargetType="{x:Type Label}">
-                <Setter Property="FontSize" Value="{StaticResource SmallFontSize}"></Setter>
+                <Setter Property="FontSize" Value="{StaticResource ProductDetailSmallFontSize}"></Setter>
                 <Setter Property="TextColor" Value="{StaticResource EntryGrey}"></Setter>
                 <Setter Property="FontAttributes" Value="Bold"></Setter>
                 <Setter Property="VerticalOptions" Value="Center"></Setter>
@@ -111,14 +118,14 @@
             </Style>
 
             <Style x:Key="ProductTilePriceStyle" TargetType="{x:Type Label}">
-                <Setter Property="FontSize" Value="{StaticResource SmallFontSize}"></Setter>
+                <Setter Property="FontSize" Value="{StaticResource ProductDetailSmallFontSize}"></Setter>
                 <Setter Property="TextColor" Value="{StaticResource ProductPurple}"></Setter>
                 <Setter Property="VerticalOptions" Value="Center"></Setter>
                 <Setter Property="HorizontalOptions" Value="End"></Setter>
             </Style>
 
             <Style x:Key="ProductTileDescriptionStyle" TargetType="{x:Type Label}">
-                <Setter Property="FontSize" Value="{StaticResource SmallFontSize}"></Setter>
+                <Setter Property="FontSize" Value="{StaticResource ProductDetailSmallFontSize}"></Setter>
                 <Setter Property="TextColor" Value="{StaticResource EntryGrey}"></Setter>
                 <Setter Property="VerticalOptions" Value="Center"></Setter>
                 <Setter Property="HorizontalOptions" Value="Start"></Setter>

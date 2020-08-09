@@ -41,6 +41,9 @@
     <Compile Update="Views\ProductCatalogView.xaml.cs">
       <DependentUpon>ProductCatalogView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\ShoppingCartViewOld.xaml.cs">
+      <DependentUpon>ShoppingCartViewOld.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
