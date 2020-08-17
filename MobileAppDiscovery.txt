@@ -210,6 +210,8 @@ Visual Studio App Center
  
  https://marketplace.visualstudio.com/items?itemName=SyncfusionInc.Essential-UI-Kit-Xamarin-Forms
  
+ note xamarin.forms version> 4
+ currently using 4.7
  
  Questions
  
@@ -221,13 +223,13 @@ Visual Studio App Center
  
  Wishlist and cart pages are under bookmark
   detail- product detail Page
-  
- what's the use of these?
+ how  to?
+ 1.what's the use of these?
   				        <Setter Property="HorizontalTextAlignment" Value="Start" />
         <Setter Property="VerticalTextAlignment" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="HorizontalOptions" Value="Start" />
-		
+2.create ControlTemplate	
  todo 
  1.validation
  others ways of doing validation
