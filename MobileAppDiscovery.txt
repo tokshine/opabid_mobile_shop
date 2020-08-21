@@ -229,7 +229,9 @@ Visual Studio App Center
         <Setter Property="VerticalTextAlignment" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="HorizontalOptions" Value="Start" />
-2.create ControlTemplate	
+2.create ContentPage.ControlTemplate	
+
+3.BindableLayout.ItemTemplate
  todo 
  1.validation
  others ways of doing validation
@@ -238,8 +240,35 @@ Visual Studio App Center
  https://www.microsoftpressstore.com/articles/article.aspx?p=2254974&seqNum=5
  
  2.Cart Page redesign
+ 
+ 
+ 
  3. Checkout /payment page (after contact/delivery address)
  
  
+ file:///C:/Users/Shina/Downloads/Microsoft_Press_eBook_CreatingMobileAppswithXamarinForms_PDF.pdf
+ 
+ 
+ "macBook"
+ 
+ A nice approach to load 
+ load data from an embedded json file in the assembly
+ --short coming the json file could make your app bigger
+ private static T PopulateData<T>(string fileName)
+        {
+            var file = "EssentialUIKit.Data." + fileName;
+
+            var assembly = typeof(App).GetTypeInfo().Assembly;
+
+            T obj;
+
+            using (var stream = assembly.GetManifestResourceStream(file))
+            {
+                var serializer = new DataContractJsonSerializer(typeof(T));
+                obj = (T)serializer.ReadObject(stream);
+            }
+
+            return obj;
+        }
  
  

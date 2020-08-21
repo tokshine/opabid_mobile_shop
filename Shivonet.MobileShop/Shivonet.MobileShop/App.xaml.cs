@@ -1,6 +1,7 @@
 ﻿using Shivonet.MobileShop.Core.Bootstrap;
 using Shivonet.MobileShop.Core.Contracts.Services.General;
 using Shivonet.MobileShop.Core.ViewModels;
+using Shivonet.MobileShop.Core.Views;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -12,9 +13,11 @@ namespace Shivonet.MobileShop.Core
         {
             InitializeComponent();
 
-            InitializeApp();
 
-            InitializeNavigation();
+            this.MainPage = new NavigationPage(new CartPage());
+          //  InitializeApp();
+
+         //    InitializeNavigation();
         }
 
         private async Task InitializeNavigation()

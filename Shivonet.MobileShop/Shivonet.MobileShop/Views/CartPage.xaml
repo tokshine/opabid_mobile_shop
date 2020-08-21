@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+           x:Class="Shivonet.MobileShop.Core.Views.CartPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:cartpageVm="clr-namespace:Shivonet.MobileShop.Core.ViewModels"
+    x:Name="cartPage"
+    Title="Cart"
+    BackgroundColor="#f6f7f8"
+    NavigationPage.HasNavigationBar="False">
+
+    <!--<ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
+
+    <ContentPage.BindingContext>
+        <cartpageVm:CartPageViewModel />
+    </ContentPage.BindingContext>
+
+    <!--<ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0">
+
+                -->
+    <!--  Title View  -->
+    <!--
+                <controls:TitleView Title="Cart" BackgroundColor="{DynamicResource Gray-White}">
+                    <controls:TitleView.LeadingView>
+                        <buttons:SfButton
+                            x:Name="backButton"
+                            Command="{TemplateBinding BindingContext.BackButtonCommand}"
+                            CommandParameter="{x:Reference backButton}"
+                            CornerRadius="4"
+                            Style="{StaticResource IconButtonStyle}"
+                            Text="{StaticResource Back}" />
+                    </controls:TitleView.LeadingView>
+                </controls:TitleView>
+
+                <ContentPresenter />
+
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>-->
+
+    <ContentPage.Content>
+
+        <!--<ScrollView VerticalScrollBarVisibility="Never">-->
+
+        <!--  Cart Details  -->
+        <Grid
+                Margin="0,16,0,0"
+                                
+                BackgroundColor="Transparent"
+                ColumnSpacing="0"
+                HorizontalOptions="Fill"
+                RowSpacing="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition  Height="Auto" />
+                <RowDefinition  Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <!--  Cart Header  -->
+            <StackLayout
+                    Padding="16"
+                    BackgroundColor="#ffffff"
+                    Orientation="Horizontal">
+                <Label
+                        
+                        Style="{StaticResource CommonLabelStyle}"
+                        Text="My Cart"
+                        TextColor="#333942" />
+
+                <Label
+                        BackgroundColor="#ffffff"
+                        FontAttributes="Bold"
+                                               HorizontalOptions="EndAndExpand"
+                        HorizontalTextAlignment="End"
+                        Style="{StaticResource CommonLabelStyle}"
+                        Text="{Binding TotalPrice, StringFormat='Total: ${0}'}"
+                        TextColor="Black" />
+            </StackLayout>
+
+            <BoxView
+                    Grid.Row="1"
+                    HeightRequest="1"
+                    Style="{StaticResource BoxViewStyle}" />
+
+            <!--  Cart items  -->
+            <StackLayout
+                    x:Name="CartLayout"
+                    Grid.Row="2"
+                    BackgroundColor="Transparent"
+                   
+                    Spacing="16"
+                    VerticalOptions="Start">
+                <Label x:Name="test" Text="{Binding Title}"> </Label>
+                <!--<BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <template:CartItemListTemplate
+                                x:Name="template"
+                                ChildElement="{Binding Source={x:Reference template}}"
+                                ParentBindingContext="{Binding Path=BindingContext, Source={x:Reference cartPage}}"
+                                ParentElement="{Binding Source={x:Reference CartLayout}}" />
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>-->
+            </StackLayout>
+
+            <!--  Separator  -->
+            <BoxView
+                    Grid.Row="0"
+                    Grid.RowSpan="4"
+                    Grid.Column="1"
+                    Style="{StaticResource BoxViewStyle}"
+                    VerticalOptions="Fill"
+                    WidthRequest="0"
+                    Color="#f6f7f8" />
+
+            <!--  Price Details  -->
+            <!--
+                <local:PriceDetailView
+                    Grid.Row="{OnIdiom Default=3,
+                                       Desktop=0}"
+                    Grid.RowSpan="{OnIdiom Default=1,
+                                           Desktop=4}"
+                    Grid.Column="{OnIdiom Default=0,
+                                          Desktop=2}"
+                    Grid.ColumnSpan="{OnIdiom Default=3,
+                                              Desktop=1}"
+                    Margin="{OnIdiom Default='0,16,0,0',
+                                     Desktop=0}"
+                    ActionText="PLACE ORDER"
+                    BackgroundColor="{DynamicResource Gray-100}"
+                    HorizontalOptions="{OnIdiom Default=Fill,
+                                                Desktop=End}" />-->
+
+        </Grid>
+        <!--</ScrollView>-->
+    </ContentPage.Content>
+</ContentPage>

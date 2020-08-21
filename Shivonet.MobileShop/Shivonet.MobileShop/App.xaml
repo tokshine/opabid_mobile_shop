@@ -10,32 +10,32 @@
 
             <OnPlatform x:Key="LargeFontSize"
                         x:TypeArguments="x:Double">
-                <On Platform="iOS" Value="20" />
+                
                 <On Platform="Android, UWP, WinRT, WinPhone" Value="18" />
             </OnPlatform>
 
             <OnPlatform x:Key="MediumFontSize"
                         x:TypeArguments="x:Double">
-                <On Platform="iOS" Value="18" />
+                
                 <On Platform="Android, UWP, WinRT, WinPhone" Value="16" />
             </OnPlatform>
 
             <OnPlatform x:Key="SmallFontSize"
                         x:TypeArguments="x:Double">
-                <On Platform="iOS" Value="14" />
+                
                 <On Platform="Android, UWP, WinRT, WinPhone" Value="16" />
             </OnPlatform>
 
 
             <OnPlatform x:Key="ProductDetailSmallFontSize"
                         x:TypeArguments="x:Double">
-                <On Platform="iOS" Value="14" />
+                
                 <On Platform="Android, UWP, WinRT, WinPhone" Value="14" />
             </OnPlatform>
 
             <OnPlatform x:Key="XSmallFontSize"
                         x:TypeArguments="x:Double">
-                <On Platform="iOS" Value="11" />
+                
                 <On Platform="Android, UWP, WinRT, WinPhone" Value="9" />
             </OnPlatform>
 
@@ -65,7 +65,12 @@
                 <Setter Property="TextColor" Value="{StaticResource ProductPurple}" />
                 <Setter Property="FontAttributes" Value="Bold" />
             </Style>
-            
+
+            <Style x:Key="BoxViewStyle" TargetType="BoxView">
+                <Setter Property="Color" Value="#ebecef" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
             <Style x:Key="RoundedEntryStyle" TargetType="{x:Type controls:RoundedEntry}">
                 <Setter Property="CornerRadius" Value="20"></Setter>
                 <Setter Property="IsCurvedCornersEnabled" Value="True"></Setter>
@@ -178,7 +183,18 @@
                 <Setter Property="HorizontalOptions" Value="Start"></Setter>
             </Style>
 
-          <converters:StringToBooleanConverter x:Key="StringToBooleanConverter"></converters:StringToBooleanConverter>
+            <Style x:Key="CommonLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#606a7b" />
+                <Setter Property="FontFamily" Value="Montserrat-Regular" />
+                <Setter Property="FontSize" Value="14" />
+                <!--<Setter Property="LineHeight" Value="{OnPlatform Android=1.5, Default=-1}" />-->
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+            </Style>
+
+            <converters:StringToBooleanConverter x:Key="StringToBooleanConverter"></converters:StringToBooleanConverter>
           <converters:ItemTappedConverter x:Key="LocalItemTappedConverter"></converters:ItemTappedConverter>
             <converters:MenuIconConverter x:Key="LocalMenuIconConverter"></converters:MenuIconConverter>
             <converters:CurrencyConverter x:Key="LocalCurrencyConverter"></converters:CurrencyConverter>
