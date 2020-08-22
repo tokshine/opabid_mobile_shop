@@ -249,7 +249,7 @@ Visual Studio App Center
  file:///C:/Users/Shina/Downloads/Microsoft_Press_eBook_CreatingMobileAppswithXamarinForms_PDF.pdf
  
  
- "macBook"
+The iPhone 6 simulator on the MacBook Pro running iOS 8.2
  
  A nice approach to load 
  load data from an embedded json file in the assembly
@@ -271,4 +271,20 @@ Visual Studio App Center
             return obj;
         }
  
+ Building ios app
+ https://docs.microsoft.com/en-us/xamarin/ios/get-started/
  
+ 
+  Building Android app
+  https://developer.xamarin.com/guides/android/getting_started/
+
+Creating a Windows app
+http://dev.windows.com/
+
+portal class lib replaced by .net standard
+
+Xamarin.Forms no longer supports Windows 8.1 and Windows Phone 8.1.
+
+Error updating Xamarin.Andoird nuget packages	
+https://forums.xamarin.com/discussion/149377/error-updating-xamarin-andoird-nuget-packages
+Soln:Add the new version in the csproj file(find and replace would do the trick)
