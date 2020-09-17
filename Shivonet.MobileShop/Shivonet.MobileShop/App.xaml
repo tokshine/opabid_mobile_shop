@@ -66,10 +66,7 @@
                 <Setter Property="FontAttributes" Value="Bold" />
             </Style>
 
-            <Style x:Key="BoxViewStyle" TargetType="BoxView">
-                <Setter Property="Color" Value="#ebecef" />
-                <Setter Property="VerticalOptions" Value="Center" />
-            </Style>
+           
 
             <Style x:Key="RoundedEntryStyle" TargetType="{x:Type controls:RoundedEntry}">
                 <Setter Property="CornerRadius" Value="20"></Setter>
@@ -193,6 +190,24 @@
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="HorizontalOptions" Value="Start" />
             </Style>
+
+        
+
+            <Style x:Key="BoxViewStyle" TargetType="BoxView">
+                <Setter Property="Color" Value="#ebecef" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+
+            <Style
+        x:Key="PriceLabelStyle"
+        BasedOn="{StaticResource CommonLabelStyle}"
+        TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+                <Setter Property="Margin" Value="16,0" />
+                <Setter Property="FontSize" Value="12" />
+            </Style>
+
 
             <converters:StringToBooleanConverter x:Key="StringToBooleanConverter"></converters:StringToBooleanConverter>
           <converters:ItemTappedConverter x:Key="LocalItemTappedConverter"></converters:ItemTappedConverter>

@@ -9,15 +9,16 @@ namespace Shivonet.MobileShop.Core
 {
     public partial class App : Application
     {
+        public static string BaseImageUrl { get; } = "https://cdn.syncfusion.com/essential-ui-kit-for-xamarin.forms/common/uikitimages/";
         public App()
         {
             InitializeComponent();
 
 
            this.MainPage = new NavigationPage(new CartPage());
-         //  InitializeApp();
+          // InitializeApp();
 
-          //  InitializeNavigation();
+           // InitializeNavigation();
         }
 
         private async Task InitializeNavigation()

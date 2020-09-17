@@ -59,6 +59,8 @@ https://github.com/xamarinuniversity
 https://github.com/idenardi/XamarinUniversity-CertificationProgress
 
 
+https://docs.microsoft.com/en-us/xamarin/xamarin-forms/creating-mobile-apps-xamarin-forms/summaries/chapter13
+
 https://docs.microsoft.com/en-us/learn/browse/?resource_type=module&products=xamarin
 
 yahoomail.com
@@ -94,11 +96,20 @@ todo syncfusion
 download images https://cdn.syncfusion.com/essential-ui-kit-for-xamarin.forms/common/uikitimages/";
 example https://cdn.syncfusion.com/essential-ui-kit-for-xamarin.forms/common/uikitimages/Ring3.png
 
+Dev Stuff/Tips
+public fields/public properties
+Because properties are implemented as very thin methods, 
+it is possible to set breakpoints on the read and write of their values. This gives them a big leg up over fields.
 
 Design principle
 Repository layer uses domain entities 
 (it is not really a good idea to use data model in your repository layer as the layer is meant to combine data ,this could be from database  and api)
 service layer uses same entities
+
+we use lambda functions cos code proximity as  oppose to having the code in a separate file
+
+diff btw struct and class?? stack/heap
+note you can create an instance of struct
 
 Building an Enterprise Mobile Application with Xamarin.Forms - DONE
 https://app.pluralsight.com/library/courses/xamarin-forms-enterprise-mobile-application/table-of-contents
@@ -114,7 +125,7 @@ visual studio 2017
 emulator or device
 
 on mac
-visual studio 2017 for mac
+visual studio 2017 for mac/xamarin studio
 emulator or device
 
 declarative code
@@ -218,8 +229,13 @@ Visual Studio App Center
  Margin="15,0" 15 from left,0 bottom
  Margin="0,15" 0 from left 15 bottom
  
- Margin="0,16,0,16"  means 16 top,bottom 0 left ,right
+ Margin="0,16,0,16"  means 16 top,bottom 0 left ,right (confirm this???)
  rowSpacing="2"> this row must cover 2 colums
+ 
+ order in xamarin ios,android and windows mobile
+ 
+ Padding = new Thickness(0, 20, 0, 0);
+ Left, Top, Right, Bottom.
  
  Wishlist and cart pages are under bookmark
   detail- product detail Page
@@ -231,22 +247,35 @@ Visual Studio App Center
         <Setter Property="HorizontalOptions" Value="Start" />
 2.create ContentPage.ControlTemplate	
 
-3.BindableLayout.ItemTemplate
- todo 
+3.BindableLayout.ItemTemplate -done
+
+4.Collectionview
+5.ListView(ex. PieOverview)...other stuff ListView vsPicker
+
+Picker Chapter 19 but was not the best material
+best material for picker(dropdown list ) - https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/picker/populating-itemssource
+
+ Todos 
  1.validation
  others ways of doing validation
  https://devblogs.microsoft.com/premier-developer/validate-input-in-xamarin-forms-using-inotifydataerrorinfo-custom-behaviors-effects-and-prism/
  BindableBase is used in my Prism project ,am using BindableObject instead
  https://www.microsoftpressstore.com/articles/article.aspx?p=2254974&seqNum=5
  
- 2.Cart Page redesign
- 
+ 2.Cart Page redesign-- ongoing
  
  
  3. Checkout /payment page (after contact/delivery address)
  
+ 4.how to create a template
  
+ 5.BindableObject template and BindableProperties -done
  file:///C:/Users/Shina/Downloads/Microsoft_Press_eBook_CreatingMobileAppswithXamarinForms_PDF.pdf
+ 
+ chk 10/09/2020
+ https://wcoder.github.io/open-source-xamarin-apps/
+ 
+ https://www.c-sharpcorner.com/article/xamarin-forms-bindable-layout/ checkboxes
  
  
 The iPhone 6 simulator on the MacBook Pro running iOS 8.2
@@ -281,10 +310,56 @@ The iPhone 6 simulator on the MacBook Pro running iOS 8.2
 Creating a Windows app
 http://dev.windows.com/
 
+
+Portal class lib vs shared lib
+Portal class lib  - code sharing at runtime
+Shared asset lib - code sharing at compile time(it appears code is duplicated in a native format at compile time for each platform type)
 portal class lib replaced by .net standard
+
+Accessing platform APIs from a Shared Asset Project is a little more straightforward than from a Portable Class Library
+But DependencyService is very easy to use, and it eliminates most reasons to use 
+a Shared Asset Project in a Xamarin.Forms application.
 
 Xamarin.Forms no longer supports Windows 8.1 and Windows Phone 8.1.
 
 Error updating Xamarin.Andoird nuget packages	
 https://forums.xamarin.com/discussion/149377/error-updating-xamarin-andoird-nuget-packages
 Soln:Add the new version in the csproj file(find and replace would do the trick)
+
+Page 71 label in a stackLayout
+As you’ve seen, a VerticalOptions setting on a Label doesn’t make a difference when the Label is a child
+ of a vertical StackLayout. The StackLayout itself constrains the height of its children
+ to only the height they require, so the child has no freedom to move vertically within that slot.
+ LayoutOptions.StartAndExpand
+ LayoutOptions.CenterAndExpand
+ LayoutOptions.EndAndExpand
+ LayoutOptions.FillAndExpand
+The 'Expand' - gives more room for label height
+
+Color.Accent - very good color on ios and android
+
+anonymous lambda function
+timesButton.Clicked += (sender, args) => { number *= 2; label.Text = number.ToString(); };
+The disadvantage of defining event handlers as anonymous lambda functions is that they can’t
+be shared among multiple views. (Actually they can, but some messy reflection code is involved.)
+
+Microsoft Blend as xaml design tool ???
+strongly typed languages such as C#
+
+Add to assembly properties for xaml compilation
+[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
+
+property attribute/property element
+
+icons
+C:\Program Files (x86)\Microsoft SDKs\Windows Phone\v8.0\Icons
+
+a reference for https://github.com/davidbritch/xamarin-forms/tree/master/BindFromControlTemplateToViewModel/BindFromControlTemplateToViewModel
+
+BindableLayout,
+https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/layouts/bindable-layouts
+
+chapter 20,23,27
+
+
+chelmsford@respondservices.co.uk

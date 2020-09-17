@@ -3,7 +3,9 @@
            x:Class="Shivonet.MobileShop.Core.Views.CartPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:cartpageVm="clr-namespace:Shivonet.MobileShop.Core.ViewModels"
+     xmlns:templates="clr-namespace:Shivonet.MobileShop.Core.Templates"
+    
+    xmlns:local1="clr-namespace:Shivonet.MobileShop.Core.Views"
     x:Name="cartPage"
     Title="Cart"
     BackgroundColor="#f6f7f8"
@@ -17,18 +19,20 @@
         </ResourceDictionary>
     </ContentPage.Resources>-->
 
-    <ContentPage.BindingContext>
+    <!--<ContentPage.BindingContext>
         <cartpageVm:CartPageViewModel />
-    </ContentPage.BindingContext>
+    </ContentPage.BindingContext>-->
 
     <!--<ContentPage.ControlTemplate>
-        <ControlTemplate>
+The content page has a template,no key name provided cos the template is created at content page level
+    <ControlTemplate>
             <StackLayout Spacing="0">
 
                 -->
     <!--  Title View  -->
     <!--
                 <controls:TitleView Title="Cart" BackgroundColor="{DynamicResource Gray-White}">
+    
                     <controls:TitleView.LeadingView>
                         <buttons:SfButton
                             x:Name="backButton"
@@ -48,7 +52,7 @@
 
     <ContentPage.Content>
 
-        <!--<ScrollView VerticalScrollBarVisibility="Never">-->
+        <ScrollView VerticalScrollBarVisibility="Never">
 
         <!--  Cart Details  -->
         <Grid
@@ -60,16 +64,20 @@
                 RowSpacing="0">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition  Height="Auto" />
-                <RowDefinition  Height="Auto" />
+
+                    <!--dont show the two first rows for phone-->
+                        <RowDefinition Height="{OnIdiom Default=Auto, Phone=0}" />
+                        <RowDefinition Height="{OnIdiom Default=Auto, Phone=0}" />
+
+
+                        <RowDefinition  Height="Auto" />
+                <RowDefinition  Height="*" />
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="0" />
+                <ColumnDefinition Width="0*" />
             </Grid.ColumnDefinitions>
 
             <!--  Cart Header  -->
@@ -103,19 +111,19 @@
                     x:Name="CartLayout"
                     Grid.Row="2"
                     BackgroundColor="Transparent"
-                   
+                    BindableLayout.ItemsSource="{Binding CartDetails}"
                     Spacing="16"
                     VerticalOptions="Start">
-                <Label x:Name="test" Text="{Binding Title}"> </Label>
-                <!--<BindableLayout.ItemTemplate>
+               
+                <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <template:CartItemListTemplate
+                            <templates:CartItemListTemplate
                                 x:Name="template"
                                 ChildElement="{Binding Source={x:Reference template}}"
                                 ParentBindingContext="{Binding Path=BindingContext, Source={x:Reference cartPage}}"
                                 ParentElement="{Binding Source={x:Reference CartLayout}}" />
                         </DataTemplate>
-                    </BindableLayout.ItemTemplate>-->
+                    </BindableLayout.ItemTemplate>
             </StackLayout>
 
             <!--  Separator  -->
@@ -129,8 +137,8 @@
                     Color="#f6f7f8" />
 
             <!--  Price Details  -->
-            <!--
-                <local:PriceDetailView
+            
+                <local1:PriceDetailView
                     Grid.Row="{OnIdiom Default=3,
                                        Desktop=0}"
                     Grid.RowSpan="{OnIdiom Default=1,
@@ -142,11 +150,11 @@
                     Margin="{OnIdiom Default='0,16,0,0',
                                      Desktop=0}"
                     ActionText="PLACE ORDER"
-                    BackgroundColor="{DynamicResource Gray-100}"
+                    BackgroundColor="#f6f7f8"
                     HorizontalOptions="{OnIdiom Default=Fill,
-                                                Desktop=End}" />-->
+                                                Desktop=End}" />
 
         </Grid>
-        <!--</ScrollView>-->
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
