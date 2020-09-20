@@ -2,9 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:behaviors="clr-namespace:Shivonet.MobileShop.Core.Behaviors;assembly=Shivonet.MobileShop.Core"
+             xmlns:local="clr-namespace:Shivonet.MobileShop.Core.Templates;assembly=Shivonet.MobileShop.Core"
              Title="Shopping Cart"
              xmlns:utility="clr-namespace:Shivonet.MobileShop.Core.Utility;assembly=Shivonet.MobileShop.Core"
-             utility:ViewModelLocator.AutoWireViewModel="True"
+             utility:ViewModelLocator.AutoWireViewModel="True"              
              x:Class="Shivonet.MobileShop.Core.Views.ShoppingCartView">
     <ContentPage.Content>
         <Grid>
@@ -12,7 +13,7 @@
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="50"></RowDefinition>
             </Grid.RowDefinitions>
-            <ListView VerticalOptions="FillAndExpand" Header="{Binding .}" Footer="{Binding .}" ItemsSource="{Binding ShoppingCartItems}" CachingStrategy="RecycleElement" 
+            <ListView  x:Name="listView" VerticalOptions="FillAndExpand" Header="{Binding .}" Footer="{Binding .}" ItemsSource="{Binding ShoppingCartItems}" CachingStrategy="RecycleElement" 
                 SeparatorVisibility="None" HasUnevenRows="True">
                 <ListView.Behaviors>
                     <behaviors:EventToCommandBehavior EventName="ItemTapped" Command="{Binding ShoppingCartItemCommand}" 
@@ -36,83 +37,205 @@
                 </ListView.HeaderTemplate>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <Grid Margin="5" BackgroundColor="White" RowSpacing="2">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="30"></RowDefinition>
-                                    <RowDefinition Height="30"></RowDefinition>
-                                    <RowDefinition Height="32"></RowDefinition>
-                                    <RowDefinition Height="2"></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="50"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                    <ColumnDefinition Width="50"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Image Grid.Row="0" Grid.RowSpan="2" HeightRequest="80" WidthRequest="100" VerticalOptions="Start" Margin="2,2,1,2" Source="{Binding Product.ImageUrl}"></Image>
+                      <ViewCell>
+                                    <Grid Margin="5" BackgroundColor="White" RowSpacing="2">
 
-                                
-
-                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Product.Name}" Margin="3" Style="{StaticResource ProductTileNameStyle}"></Label>
-                                <Label Grid.Row="0" Grid.Column="2"  Margin="3" Text="{Binding Product.Price, Converter={StaticResource LocalCurrencyConverter}}" Style="{StaticResource ProductTilePriceStyle}" HorizontalTextAlignment="End"></Label>
-                                <Label Grid.Column="1" Grid.Row="1" Margin="3" Grid.ColumnSpan="2" Text="{Binding Product.ShortDescription}" Style="{StaticResource ProductTileDescriptionStyle}"></Label>
-                                <Grid Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="1" HeightRequest="30">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition></RowDefinition>
-                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="{OnIdiom Default=1, Phone=0}" />
                                     </Grid.RowDefinitions>
+
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition></ColumnDefinition>
-                                        <ColumnDefinition></ColumnDefinition>
-                                        <ColumnDefinition></ColumnDefinition>
-                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
 
+                                    <!--  Product image  -->
+                                    <Image
+                                        Grid.Row="0"
+                                        Grid.RowSpan="4"
+                                        Grid.Column="0"
+                                        Margin="16"
+                                        Aspect="Fill"
+                                        BackgroundColor="#ebecef"
+                                        HeightRequest="140"
+                                        WidthRequest="120">
+                                        <Image.Source>
+                                            <UriImageSource
+                                                CacheValidity="14"
+                                                CachingEnabled="true"
+                                                Uri="{Binding Product.ImageUrl}" />
+                                        </Image.Source>
+                                    </Image>
+
+                                    <!--  Product name  -->
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Margin="0,16,0,4"
+         
+                                        FontSize="14"
+                                        HorizontalOptions="StartAndExpand"
+                                        LineBreakMode="TailTruncation"
+                                        MaxLines="1"
+                                        Style="{StaticResource CommonLabelStyle}"
+                                        Text="{Binding Product.Name}"
+                                        TextColor="#333942" />
+
+                                    <!--  Product summary  -->
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Margin="0,0,0,8"
+          
+                                        FontSize="12"
+                                        LineBreakMode="TailTruncation"
+                                        LineHeight="{OnPlatform Android=1.25,
+                                                                Default=-1}"
+                                        MaxLines="2"
+                                        Style="{StaticResource CommonLabelStyle}"
+                                        Text="{Binding Product.ShortDescription}" />
+
+                                    <StackLayout
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        Margin="0,0,0,16"
+                                        Padding="0"
+                                        Orientation="Horizontal"
+                                        Spacing="4">
+
+                                        <!--  Product price  -->
+                                        <Label
+               
+                                            FontSize="20"
+                                            HorizontalOptions="Start"
+                                            Style="{StaticResource CommonLabelStyle}"
+                                            Text="{Binding Total, StringFormat='${0:0.00}'}"
+                                            TextColor="#f54e5e" />
+
+                                        <Label
+                
+                                            FontSize="12"
+                                            HorizontalOptions="Start"
+                                            Style="{StaticResource CommonLabelStyle}"
+                                            Text="{Binding Product.Price, StringFormat='${0:0.00}'}"
+                                            TextDecorations="Strikethrough"
+                                            VerticalTextAlignment="Center" />
+
+                                        <Label
+                
+                                            FontSize="12"
+                                            HorizontalOptions="Start"
+                                            Style="{StaticResource CommonLabelStyle}"
+                                            Text="{Binding Product.DiscountPercent, StringFormat=' ({0}% OFF)'}"
+                                            TextColor="#f54e5e"
+                                            VerticalTextAlignment="Center" />
+
+                                    </StackLayout>
+
+                                    <StackLayout
+                                        Grid.Row="3"
+                                        Grid.Column="1"
+                                        Margin="0"
+                                        Padding="0"
+                                        HorizontalOptions="Start"
+                                        Orientation="Horizontal"
+                                        Spacing="0"
+                                        VerticalOptions="Start">
 
 
-                                    <Image Source="removeicon.png"  Grid.Row="1"  Grid.Column="0" WidthRequest="30" HeightRequest="30" VerticalOptions="Center" ></Image>
+                                        <Picker x:Name="picker"
+                                    Title="Qty"
+                                    TitleColor="Red"   Margin="10,0,24,0" SelectedIndexChanged="OnPickerSelectedIndexChanged" WidthRequest="90" HorizontalOptions="StartAndExpand" HeightRequest="40"  >
+                                            <Picker.ItemsSource>
+                                                <x:Array Type="{x:Type x:String}">
+                                                    <x:String>1</x:String>
+                                                    <x:String>2</x:String>
+                                                    <x:String>3</x:String>
+                                                    <x:String>4</x:String>
+                                                    <x:String>5</x:String>
+                                                    <x:String>6</x:String>
+                                                    <x:String>7</x:String>
+                                                </x:Array>
+                                            </Picker.ItemsSource>
+                                        </Picker>
 
-                                    <Label Text="Quantity" Grid.Row="0" Grid.Column="1" Style="{StaticResource ShoppingCartTileSmallHeaderStyle}"></Label>
-                                    <Label Text="Price/product" Grid.Row="0" Grid.Column="2" Style="{StaticResource ShoppingCartTileSmallHeaderStyle}"></Label>
-                                    <Label Text="Line total" Grid.Row="0" Grid.Column="3" Style="{StaticResource ShoppingCartTileSmallHeaderStyle}"></Label>
-                                    <Label Text="{Binding Quantity}" Grid.Row="1" Grid.Column="1" Style="{StaticResource ShoppingCartTileSmallStyle}"></Label>
-                                    <Label Text="{Binding Product.Price, Converter={StaticResource LocalCurrencyConverter}}" Grid.Row="1" Grid.Column="2" Style="{StaticResource ShoppingCartTileSmallStyle}"></Label>
-                                    <Label Text="{Binding Total, Converter={StaticResource LocalCurrencyConverter}}" Grid.Row="1" Grid.Column="3" Style="{StaticResource ShoppingCartTileSmallStyle}"></Label>
+                                        <Button                
+                                            Margin="24,0,0,0"                
+                                            CornerRadius="4"
+                                            HeightRequest="32"
+                                           TextColor="#567cd7"                
+                                            VerticalOptions="Center"
+                                            WidthRequest="92"                
+                                            FontSize="12"             
+                                            HorizontalOptions="Center"             
+                                            Text="Remove" 
+                                            BackgroundColor="Transparent"              
+                                            ></Button>
+
+           
+                                    </StackLayout>
+
                                 </Grid>
-                            </Grid>
-                        </ViewCell>
+                    </ViewCell>
+                          
+                       
+
                     </DataTemplate>
                 </ListView.ItemTemplate>
                 <ListView.FooterTemplate>
                     <DataTemplate>
-                        <Grid RowSpacing="0" Margin="3, 0" >
+                        <Grid RowSpacing="0" Margin="25, 0" >
                            <!--todo this does not make sense to me--> 
                             <Grid.RowDefinitions> 
                                 <RowDefinition Height="6*"></RowDefinition>
                             </Grid.RowDefinitions>
                             <Grid BackgroundColor="White" IsVisible="{Binding ShoppingCartItems.Count, Converter={StaticResource LocalCountToVisibilityConverter}, ConverterParameter=True}">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="15"></RowDefinition>
-                                    <RowDefinition Height="15"></RowDefinition>
-                                    <RowDefinition Height="15"></RowDefinition>
-                                    <RowDefinition Height="15"></RowDefinition>
-                                    <RowDefinition Height="25"></RowDefinition>
+                                    <RowDefinition Height="20"></RowDefinition>
+                                  
+                                   <RowDefinition Height="1" />
+                                  
+                                    <RowDefinition Height="20"></RowDefinition>
+                                    <RowDefinition Height="20"></RowDefinition>
+                                    <RowDefinition Height="20"></RowDefinition>
+                                    <RowDefinition Height="1"></RowDefinition>
+                                   <RowDefinition Height="20"></RowDefinition>
                                     <RowDefinition Height="50"></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Label Text="Your order" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource RegularStyle}"></Label>
-                                <Label Text="Purchase total" Grid.Row="1" Grid.Column="0" Style="{StaticResource ShoppingCartTileSmallBoldStyle}" ></Label>
-                                <Label Text="Taxes" Grid.Row="2" Grid.Column="0" Style="{StaticResource ShoppingCartTileSmallBoldStyle}"></Label>
-                                <Label Text="Shipping" Grid.Row="3" Grid.Column="0" Style="{StaticResource ShoppingCartTileSmallBoldStyle}"></Label>
-                                <Label Text="Total" Grid.Row="4" Grid.Column="0" Style="{StaticResource ShoppingCartLabelTotalStyle}"></Label>
-                                <Label Text="{Binding OrderTotal, Converter={StaticResource LocalCurrencyConverter}}" Style="{StaticResource ShoppingCartTileSmallStyle}" Grid.Row="1" Grid.Column="1" ></Label>
-                                <Label Text="{Binding Taxes, Converter={StaticResource LocalCurrencyConverter}}" Style="{StaticResource ShoppingCartTileSmallStyle}" Grid.Row="2" Grid.Column="1" ></Label>
-                                <Label Text="{Binding Shipping, Converter={StaticResource LocalCurrencyConverter}}" Style="{StaticResource ShoppingCartTileSmallStyle}" Grid.Row="3" Grid.Column="1" ></Label>
-                                <Label Text="{Binding GrandTotal, Converter={StaticResource LocalCurrencyConverter}}" Style="{StaticResource ShoppingCartTotalStyle}" Grid.Row="4"  Grid.Column="1" ></Label>
-                                <Button Text="Checkout" Style="{StaticResource RegularButton}" Command="{Binding CheckOutCommand}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center"></Button>
+                                <Label Text="Your Order" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" TextColor="#333942"  Style="{StaticResource CartPageRegularStyle}" ></Label>
+                                <BoxView
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                HeightRequest="1"
+                Style="{StaticResource BoxViewStyle}" />
+                              
+                                <Label Text="Purchase total" Grid.Row="2" Grid.Column="0"  Style="{StaticResource CartPageShoppingCartTileSmallBoldStyle}" ></Label>
+                                <Label Text="Taxes" Grid.Row="3" Grid.Column="0" Style="{StaticResource CartPageShoppingCartTileSmallBoldStyle}" ></Label>
+                                <Label Text="Shipping" Grid.Row="4" Grid.Column="0"  Style="{StaticResource CartPageShoppingCartTileSmallBoldStyle}" ></Label>
+                                <Label Text="Total" Grid.Row="6" Grid.Column="0" TextColor="#333942"  Style="{StaticResource CartPageRegularStyle}" ></Label>
+                                <Label Text="{Binding OrderTotal, Converter={StaticResource LocalCurrencyConverter}}"  Grid.Row="2" Grid.Column="1" Style="{StaticResource ShoppingCartTileSmallStyle}" HorizontalOptions="End" HorizontalTextAlignment="End"></Label>
+                                <Label Text="{Binding Taxes, Converter={StaticResource LocalCurrencyConverter}}" Grid.Row="3" Grid.Column="1" Style="{StaticResource ShoppingCartTileSmallStyle}" HorizontalOptions="End"  HorizontalTextAlignment="End" ></Label>
+                                <Label Text="{Binding Shipping, Converter={StaticResource LocalCurrencyConverter}}"  Grid.Row="4" Grid.Column="1" Style="{StaticResource ShoppingCartTileSmallStyle}"  HorizontalOptions="End" HorizontalTextAlignment="End"></Label>
+                              
+                                              <BoxView
+                Grid.Row="5"
+                Grid.ColumnSpan="2"
+                HeightRequest="1"
+                Style="{StaticResource BoxViewStyle}" />
+                              
+                                <Label Text="{Binding GrandTotal, Converter={StaticResource LocalCurrencyConverter}}"  Grid.Row="6"  Grid.Column="1" Style="{StaticResource ShoppingCartTotalStyle}"   HorizontalOptions="End" HorizontalTextAlignment="End" ></Label>
+                                <Button Text="Checkout" Style="{StaticResource RegularButton}" Command="{Binding CheckOutCommand}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center"></Button>
+                        
+                          
+                        
                             </Grid>
                             <Grid IsVisible="{Binding ShoppingCartItems.Count, Converter={StaticResource LocalCountToVisibilityConverter}, ConverterParameter=False}" VerticalOptions="CenterAndExpand">
                                 <Label Text="Please add some products first" Style="{StaticResource RegularStyle}" HorizontalOptions="CenterAndExpand"></Label>

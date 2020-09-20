@@ -10,6 +10,8 @@
 
         public int Quantity { get; set; }
 
-        public decimal Total => Quantity * Product.Price;
+        public decimal DiscountPercent => 15;
+
+        public decimal Total => Quantity * Product.Price * (1 - DiscountPercent / 100);
     }
 }

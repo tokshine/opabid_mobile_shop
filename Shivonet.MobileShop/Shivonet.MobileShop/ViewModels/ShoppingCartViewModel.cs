@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Shivonet.MobileShop.Core.Constants;
@@ -51,6 +52,16 @@ namespace Shivonet.MobileShop.Core.ViewModels
             set
             {
                 _grandTotal = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public decimal OrderTotal
+        {
+            get => _orderTotal;
+            set
+            {
+                _orderTotal = value;
                 OnPropertyChanged();
             }
         }
@@ -117,7 +128,20 @@ namespace Shivonet.MobileShop.Core.ViewModels
         public override async Task InitializeAsync(object data)
         {
             var shoppingCart = await _shoppingCartService.GetShoppingCart(_settingsService.UserIdSetting);
-            ShoppingCartItems = shoppingCart.ShoppingCartItems.ToObservableCollection();
+            // ShoppingCartItems = shoppingCart.ShoppingCartItems.ToObservableCollection();
+            ShoppingCartItems.Clear();
+            var items = shoppingCart.ShoppingCartItems;
+            var products = items.Select(x => x.ProductId).Distinct();
+            foreach (var p in products)
+            {
+                var cartItemForThisProduct = items.First(x => x.ProductId == p);
+
+                var cartItemsForThisProduct = items.Count(x => x.ProductId == p);
+
+                cartItemForThisProduct.Quantity = cartItemsForThisProduct;
+
+                ShoppingCartItems.Add(cartItemForThisProduct);
+            }
         }
 
         private async void OnAddProductToBasketReceived(Product product)
@@ -126,7 +150,8 @@ namespace Shivonet.MobileShop.Core.ViewModels
 
             await _shoppingCartService.AddShoppingCartItem(shoppingCartItem, _settingsService.UserIdSetting);
 
-            ShoppingCartItems.Add(shoppingCartItem);
+
+           ShoppingCartItems.Add(shoppingCartItem);
 
             RecalculateBasket();
         }

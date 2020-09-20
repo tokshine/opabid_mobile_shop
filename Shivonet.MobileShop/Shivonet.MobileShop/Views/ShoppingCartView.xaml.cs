@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms;
+﻿using Shivonet.MobileShop.Core.Templates;
+using System;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Shivonet.MobileShop.Core.Views
@@ -9,6 +11,18 @@ namespace Shivonet.MobileShop.Core.Views
 		public ShoppingCartView()
 		{
 			InitializeComponent ();
-		}
-	}
+
+        }
+
+        void OnPickerSelectedIndexChanged(object sender, EventArgs e)
+        {
+            var picker = (Picker)sender;
+            int selectedIndex = picker.SelectedIndex;
+
+            if (selectedIndex != -1)
+            {
+                //monkeyNameLabel.Text = (string)picker.ItemsSource[selectedIndex];
+            }
+        }
+    }
 }
