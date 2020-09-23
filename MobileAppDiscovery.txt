@@ -277,6 +277,8 @@ best material for picker(dropdown list ) - https://docs.microsoft.com/en-us/xama
  
  https://www.c-sharpcorner.com/article/xamarin-forms-bindable-layout/ checkboxes
  
+ https://www.c-sharpcorner.com/article/xamarin-forms-expandable-listview-with-a-sub-listview-mvvm-pattern/
+ 
  
 The iPhone 6 simulator on the MacBook Pro running iOS 8.2
  

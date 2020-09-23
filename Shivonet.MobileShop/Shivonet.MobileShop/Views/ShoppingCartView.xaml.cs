@@ -11,18 +11,19 @@ namespace Shivonet.MobileShop.Core.Views
 		public ShoppingCartView()
 		{
 			InitializeComponent ();
+           
 
         }
 
-        void OnPickerSelectedIndexChanged(object sender, EventArgs e)
-        {
-            var picker = (Picker)sender;
-            int selectedIndex = picker.SelectedIndex;
+        //void OnPickerSelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    var picker = (Picker)sender;
+        //    int selectedIndex = picker.SelectedIndex;
 
-            if (selectedIndex != -1)
-            {
-                //monkeyNameLabel.Text = (string)picker.ItemsSource[selectedIndex];
-            }
-        }
+        //    if (selectedIndex != -1)
+        //    {
+        //        //monkeyNameLabel.Text = (string)picker.ItemsSource[selectedIndex];
+        //    }
+        //}
     }
 }

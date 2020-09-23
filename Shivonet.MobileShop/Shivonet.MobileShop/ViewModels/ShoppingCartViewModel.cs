@@ -1,5 +1,8 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Shivonet.MobileShop.Core.Constants;
@@ -7,11 +10,14 @@ using Shivonet.MobileShop.Core.Contracts.Services.Data;
 using Shivonet.MobileShop.Core.Contracts.Services.General;
 using Shivonet.MobileShop.Core.Extensions;
 using Shivonet.MobileShop.Core.Models;
+using Shivonet.MobileShop.Core.Validation;
 using Shivonet.MobileShop.Core.ViewModels.Base;
 using Xamarin.Forms;
 
 namespace Shivonet.MobileShop.Core.ViewModels
 {
+
+
     public class ShoppingCartViewModel : ViewModelBase
     {
         private ObservableCollection<ShoppingCartItem> _shoppingCartItems;
@@ -22,6 +28,9 @@ namespace Shivonet.MobileShop.Core.ViewModels
         private decimal _taxes;
         private decimal _shipping;
         private decimal _grandTotal;
+         
+
+        
 
         public ShoppingCartViewModel(IConnectionService connectionService,
             INavigationService navigationService, IDialogService dialogService,
@@ -31,7 +40,10 @@ namespace Shivonet.MobileShop.Core.ViewModels
             _settingsService = settingsService;
             _shoppingCartItems = new ObservableCollection<ShoppingCartItem>();
             _orderTotal = 0;
+            
         }
+
+   
 
         public ICommand CheckOutCommand =>  new Command(OnCheckOut);
 
@@ -54,7 +66,8 @@ namespace Shivonet.MobileShop.Core.ViewModels
                 _grandTotal = value;
                 OnPropertyChanged();
             }
-        }
+        }     
+
 
         public decimal OrderTotal
         {
@@ -140,6 +153,8 @@ namespace Shivonet.MobileShop.Core.ViewModels
 
                 cartItemForThisProduct.Quantity = cartItemsForThisProduct;
 
+                cartItemForThisProduct.SelectedQuantity = new Quantity { Id=cartItemsForThisProduct, Name = cartItemsForThisProduct.ToString()};
+
                 ShoppingCartItems.Add(cartItemForThisProduct);
             }
         }
@@ -157,3 +172,4 @@ namespace Shivonet.MobileShop.Core.ViewModels
         }
     }
 }
+

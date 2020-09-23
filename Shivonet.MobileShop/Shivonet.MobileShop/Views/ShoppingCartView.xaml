@@ -147,7 +147,21 @@
                                         VerticalOptions="Start">
 
 
-                                        <Picker x:Name="picker"
+                                      <Picker    Title="Qty"
+                                                                TitleColor="Red"   
+                                                                Margin="10,0,24,0"                                                
+                                                                WidthRequest="90"
+                                                                HorizontalOptions="StartAndExpand" 
+                                                                HeightRequest="40"  
+                                                                ItemsSource="{Binding QuantityList}"
+                                                                ItemDisplayBinding="{Binding Name}"
+                                                                SelectedItem="{Binding SelectedQuantity}"
+                                                                SelectedIndex ="{Binding SelectedQuantity.Id}"                                            
+                                       />
+                                    
+                                      <!--<Label Text="{Binding SelectedQuantity.Name}"     HorizontalOptions="Center"  />-->
+                                      
+                                        <!--<Picker x:Name="picker"
                                     Title="Qty"
                                     TitleColor="Red"   Margin="10,0,24,0" SelectedIndexChanged="OnPickerSelectedIndexChanged" WidthRequest="90" HorizontalOptions="StartAndExpand" HeightRequest="40"  >
                                             <Picker.ItemsSource>
@@ -161,7 +175,7 @@
                                                     <x:String>7</x:String>
                                                 </x:Array>
                                             </Picker.ItemsSource>
-                                        </Picker>
+                                        </Picker>-->
 
                                         <Button                
                                             Margin="24,0,0,0"                
