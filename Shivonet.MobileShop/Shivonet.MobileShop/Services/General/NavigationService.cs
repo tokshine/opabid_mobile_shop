@@ -181,6 +181,8 @@ namespace Shivonet.MobileShop.Core.Services.General
             _mappings.Add(typeof(ProductDetailViewModel), typeof(ProductDetailView));
             _mappings.Add(typeof(RegistrationViewModel), typeof(RegistrationView));
             _mappings.Add(typeof(ShoppingCartViewModel), typeof(ShoppingCartView));
+            _mappings.Add(typeof(CardPaymentViewModel), typeof(CardPaymentView));
+
         }
     }
 }

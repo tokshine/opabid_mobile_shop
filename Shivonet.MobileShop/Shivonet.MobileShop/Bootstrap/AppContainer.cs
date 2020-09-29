@@ -29,6 +29,7 @@ namespace Shivonet.MobileShop.Core.Bootstrap
             builder.RegisterType<ShoppingCartViewModel>().SingleInstance();
             builder.RegisterType<MenuViewModel>();
             builder.RegisterType<HomeViewModel>();
+            builder.RegisterType<CardPaymentViewModel>();
 
             //services - data
             builder.RegisterType<CatalogDataService>().As<ICatalogDataService>();

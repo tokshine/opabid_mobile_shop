@@ -51,7 +51,8 @@ namespace Shivonet.MobileShop.Core.ViewModels
             await _orderDataService.PlaceOrder(Order);
             MessagingCenter.Send(this, "OrderPlaced");
             await _dialogService.ShowDialog("Order placed successfully", "Success", "OK");
-            await _navigationService.PopToRootAsync();
+           //await _navigationService.PopToRootAsync(); //takes you to the home page
+            await _navigationService.NavigateToAsync<CardPaymentViewModel>();
         }
     }
 }

@@ -16,7 +16,7 @@
                 <Label Text="CHECK OUT NOW" Style="{StaticResource PageHeaderStyle}" HorizontalOptions="CenterAndExpand"></Label>
             </StackLayout>
         </Grid>
-        <Grid Margin="5">
+        <Grid Margin="20,0,20,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"></RowDefinition>
                 <RowDefinition Height="40"></RowDefinition> 

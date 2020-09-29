@@ -40,6 +40,9 @@
     <Compile Update="Templates\ProductTemplate.xaml.cs">
       <DependentUpon>ProductTemplate.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\CardPaymentView.xaml.cs">
+      <DependentUpon>CardPaymentView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\ProductNavigationPage.xaml.cs">
       <DependentUpon>ProductNavigationPage.xaml</DependentUpon>
     </Compile>
@@ -60,6 +63,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Templates\ProductTemplate.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\CardPaymentView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\PriceDetailView.xaml">
