@@ -15,11 +15,11 @@ namespace Shivonet.MobileShop.Core
             InitializeComponent();
 
 
-          
-//this.MainPage = new NavigationPage(new CartPage());
-           InitializeApp();
 
-           InitializeNavigation();
+            //this.MainPage = new NavigationPage(new CartPage());
+            InitializeApp();
+
+            InitializeNavigation();
         }
 
         private async Task InitializeNavigation()

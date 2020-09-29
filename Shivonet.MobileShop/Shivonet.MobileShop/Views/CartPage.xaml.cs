@@ -1,4 +1,5 @@
-﻿using Shivonet.MobileShop.Core.ViewModels;
+﻿using Shivonet.MobileShop.Core.Models;
+using Shivonet.MobileShop.Core.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,9 @@ namespace Shivonet.MobileShop.Core.Views
 
            var prods=  PopulateData<CartPageViewModel>("ecommerce.json");
 
-           // prods.CartDetails.ForEach(x => x.DiscountPrice = 5);
+            // prods.CartDetails.ForEach(x => x.DiscountPrice = 5);
+          
+            prods.CartDetails.ForEach(x => x.SelectedIndex  = x.TotalQuantity);
             BindingContext = prods;
                 //PopulateData<CartPageViewModel>("ecommerce.json");
         }

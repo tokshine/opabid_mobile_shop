@@ -52,11 +52,51 @@ namespace Shivonet.MobileShop.Core.ViewModels
             get => _shoppingCartItems;
             set
             {
+                //this section  is  triggered by ShoppingCartItems = shoppingCart.ShoppingCartItems.ToObservableCollection();
                 _shoppingCartItems = value;
                 RecalculateBasket();
                 OnPropertyChanged();
+               
             }
         }
+
+        //got this style from Essential sf
+        private Command removeCommand;
+
+        private Command pickItemCommand;
+        public Command RemoveCommand
+        {
+            get { return this.removeCommand ?? (this.removeCommand = new Command(this.RemoveClicked)); }
+        }
+
+       // public ICommand PickItemCommand => new Command(OnPickItemSelectedIndexChanged);
+
+        public Command PickItemCommand
+        {
+            get { return this.pickItemCommand ?? (this.pickItemCommand = new Command(this.OnPickItemSelectedIndexChanged)); }
+        }
+
+        //in case a parameter is required
+        //private void OnPickItemSelectedIndexChanged(object obj)
+        //{
+        //    RecalculateBasket();
+        //}
+
+        private void OnPickItemSelectedIndexChanged()
+        {
+            RecalculateBasket();
+        }
+
+
+        private void RemoveClicked(object obj)
+        {
+            if (obj is ShoppingCartItem shoppingCartItem)
+            {
+                this.ShoppingCartItems.Remove(shoppingCartItem);
+                RecalculateBasket();
+            }
+        }
+
 
         public decimal GrandTotal
         {
@@ -124,6 +164,8 @@ namespace Shivonet.MobileShop.Core.ViewModels
             Taxes = _orderTotal * (decimal)0.2;
             Shipping = _orderTotal * (decimal)0.1;
             GrandTotal = _orderTotal + _shipping + _taxes;
+            OrderTotal = _orderTotal;
+           
         }
 
         private decimal CalculateOrderTotal()
@@ -132,7 +174,9 @@ namespace Shivonet.MobileShop.Core.ViewModels
 
             foreach (var shoppingCartItem in ShoppingCartItems)
             {
-                total += shoppingCartItem.Quantity * shoppingCartItem.Product.Price;
+                decimal discount = (1 - 15M / 100);
+                var amount = shoppingCartItem.Quantity * shoppingCartItem.Product.Price * discount;
+                total += amount;               
             }
 
             return total;
@@ -143,20 +187,30 @@ namespace Shivonet.MobileShop.Core.ViewModels
             var shoppingCart = await _shoppingCartService.GetShoppingCart(_settingsService.UserIdSetting);
             // ShoppingCartItems = shoppingCart.ShoppingCartItems.ToObservableCollection();
             ShoppingCartItems.Clear();
+            UpdateBasket(shoppingCart);
+        }
+
+        private void UpdateBasket(ShoppingCart shoppingCart )
+        {
             var items = shoppingCart.ShoppingCartItems;
             var products = items.Select(x => x.ProductId).Distinct();
             foreach (var p in products)
             {
-                var cartItemForThisProduct = items.First(x => x.ProductId == p);
+                var cartItemForThisProduct = items.First(x => x.ProductId == p); //to avoid the duplicates in my db
 
                 var cartItemsForThisProduct = items.Count(x => x.ProductId == p);
 
                 cartItemForThisProduct.Quantity = cartItemsForThisProduct;
 
-                cartItemForThisProduct.SelectedQuantity = new Quantity { Id=cartItemsForThisProduct, Name = cartItemsForThisProduct.ToString()};
+               
+                cartItemForThisProduct.Total = cartItemsForThisProduct * cartItemForThisProduct.Product.Price * (1 - cartItemForThisProduct.DiscountPercent / 100);
 
+                // cartItemForThisProduct.SelectedQuantity = new Quantity { Id=cartItemsForThisProduct, Name = cartItemsForThisProduct.ToString()};
+                cartItemForThisProduct.SelectedIndex = cartItemsForThisProduct - 1;
                 ShoppingCartItems.Add(cartItemForThisProduct);
             }
+            ShoppingCartItems = ShoppingCartItems.ToObservableCollection();// this calls the set on ShoppingCartItems ,it is expensive??
+            //Should I just use the 
         }
 
         private async void OnAddProductToBasketReceived(Product product)
@@ -165,10 +219,14 @@ namespace Shivonet.MobileShop.Core.ViewModels
 
             await _shoppingCartService.AddShoppingCartItem(shoppingCartItem, _settingsService.UserIdSetting);
 
+            var shoppingCart = await _shoppingCartService.GetShoppingCart(_settingsService.UserIdSetting);
+            // ShoppingCartItems = shoppingCart.ShoppingCartItems.ToObservableCollection();
+            ShoppingCartItems.Clear();
 
-           ShoppingCartItems.Add(shoppingCartItem);
+            // ShoppingCartItems.Add(shoppingCartItem);
+            UpdateBasket(shoppingCart);
 
-            RecalculateBasket();
+            //RecalculateBasket();
         }
     }
 }

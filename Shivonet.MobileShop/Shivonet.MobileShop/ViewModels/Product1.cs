@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shivonet.MobileShop.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -210,6 +211,35 @@ namespace Shivonet.MobileShop.Core.ViewModels
                 this.NotifyPropertyChanged(nameof(IsFavourite));
             }
         }
+        private Quantity _selectedQuantity;
+
+        private int _selectedIndex { get; set; }
+
+        public int SelectedIndex
+        {
+            get
+            {
+                return _selectedIndex;
+            }
+            set
+            {
+                _selectedIndex = value;
+                this.NotifyPropertyChanged(nameof(SelectedIndex));
+            }
+        }
+
+        //this is not really required  SelectedIndex  will do
+        public Quantity SelectedQuantity
+        {
+            get => _selectedQuantity;
+            set
+            {
+                _selectedQuantity = value;
+                this.NotifyPropertyChanged(nameof(SelectedQuantity));
+            }
+        }
+
+        public IList<Quantity> QuantityList { get { return QuantityData.QuantityList; } }
 
         /// <summary>
         /// Gets or sets the property that has been bound with SfCombobox, which displays the total quantity.
@@ -219,9 +249,10 @@ namespace Shivonet.MobileShop.Core.ViewModels
         {
             get
             {
-                return this.totalQuantity;
+                return 
+                    
+                    this.totalQuantity;
             }
-
             set
             {
                 this.totalQuantity = value;

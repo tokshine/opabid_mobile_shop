@@ -250,7 +250,26 @@ Visual Studio App Center
 3.BindableLayout.ItemTemplate -done
 
 4.Collectionview
-5.ListView(ex. PieOverview)...other stuff ListView vsPicker
+5.ListView(ex. PieOverview)
+...other stuff ListView with picker
+6.Trigger can also be used for validation   Trigger/converter which one is better???
+with trigger ,less code is written
+7.Trigger vs Behaviour
+Anything you can do with a trigger you can also do with a behavior. However, a behavior always involves some code, which is a class that derives from Behavior<T>. Triggers only involve code if you’re writing an Action<T>derivative for anEventTriggeror for EnterActionsor ExitActionscollections of the other triggers
+
+note you can combine a behavior with a trigger page 897
+
+note you can combine a behavior with a converter 875
+
+note you cannot put a behavior in a style 
+
+
+
+good material on picker
+https://forums.xamarin.com/discussion/127969/picker-not-updating-selected-item-from-mvvm
+
+ SelectedItem="{Binding SelectedQuantity}"   may not be important
+ SelectedIndex would suffix
 
 Picker Chapter 19 but was not the best material
 best material for picker(dropdown list ) - https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/picker/populating-itemssource
@@ -272,6 +291,17 @@ best material for picker(dropdown list ) - https://docs.microsoft.com/en-us/xama
  5.BindableObject template and BindableProperties -done
  file:///C:/Users/Shina/Downloads/Microsoft_Press_eBook_CreatingMobileAppswithXamarinForms_PDF.pdf
  
+ 6. {Binding .} vs {Binding }
+ "." is the entire BindingContext
+ 
+    <Picker.Behaviors>
+                                            <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" 
+                                                                              Command="{Binding Source={x:Reference ShoppingCartViewPage}, Path=BindingContext.PickItemCommand}"
+                                                                           CommandParameter="{Binding}"
+                                                   >
+                                            </behaviors:EventToCommandBehavior>
+</Picker.Behaviors>
+ 
  chk 10/09/2020
  https://wcoder.github.io/open-source-xamarin-apps/
  
@@ -279,6 +309,7 @@ best material for picker(dropdown list ) - https://docs.microsoft.com/en-us/xama
  
  https://www.c-sharpcorner.com/article/xamarin-forms-expandable-listview-with-a-sub-listview-mvvm-pattern/
  
+ https://www.c-sharpcorner.com/article/xamarin-forms-eventtocommand-behavior-in-mvvm-viewmodel/
  
 The iPhone 6 simulator on the MacBook Pro running iOS 8.2
  
@@ -363,5 +394,38 @@ https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/layouts/bi
 
 chapter 20,23,27
 
+Ecommerce logic
+remove function
 
-chelmsford@respondservices.co.uk
+public Command RemoveCommand
+        {
+            get { return this.removeCommand ?? (this.removeCommand = new Command(this.RemoveClicked)); }
+        }
+		
+private void RemoveClicked(object obj)
+        {
+            if (obj is Product product )
+            {
+                this.CartDetails.Remove(product);
+                this.UpdatePrice();
+            }
+        }
+		
+ private void UpdatePrice()
+        {
+            this.ResetPriceValue();//reset all major properties to 0
+
+            if (this.CartDetails != null && this.CartDetails.Count > 0)
+            {
+                foreach (var cartDetail in this.CartDetails)
+                {
+                    if (cartDetail.TotalQuantity == 0)
+                        cartDetail.TotalQuantity = 1;
+                    this.TotalPrice += (cartDetail.ActualPrice * cartDetail.TotalQuantity);
+                    this.DiscountPrice += (cartDetail.DiscountPrice * cartDetail.TotalQuantity);
+                    this.percent += cartDetail.DiscountPercent;
+                }
+
+                this.DiscountPercent = this.percent > 0 ? this.percent / this.CartDetails.Count : 0;
+            }
+        }

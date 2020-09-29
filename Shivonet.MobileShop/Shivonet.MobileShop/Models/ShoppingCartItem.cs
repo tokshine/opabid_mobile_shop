@@ -9,10 +9,9 @@ namespace Shivonet.MobileShop.Core.Models
     public class Quantity
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Name { get; set; }      
 
-   
-
+        public int SelIndex { get; set; } //dont bind ,this could be useful lookup
     }
 
     public static class QuantityData
@@ -22,7 +21,7 @@ namespace Shivonet.MobileShop.Core.Models
         static QuantityData()
         {
             QuantityList = new List<Quantity>();
-            for (int i = 1; i <= 15; i++)
+            for (int i = 1; i <= 12; i++)
             {
 
                 var q = new Quantity { Id = i, Name = i.ToString() };
@@ -36,8 +35,8 @@ namespace Shivonet.MobileShop.Core.Models
         : INotifyPropertyChanged
     {
 
-        private Quantity _selectedQuantity;
-
+        //  private Quantity _selectedQuantity;
+        private int _quantity;
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -57,22 +56,64 @@ namespace Shivonet.MobileShop.Core.Models
 
         public int Quantity { get; set; }
 
-        // public Quantity  SelectedQuantity { get; set; }
 
-        public Quantity SelectedQuantity
+        //public int Quantity
+        //{
+        //    get
+        //    {
+        //        return _quantity;
+        //    }
+        //    set
+        //    {
+        //        _quantity = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
+
+        private int _selectedIndex { get; set; }
+
+        public int SelectedIndex
         {
-            get => _selectedQuantity;
+            get
+            {
+                return _selectedIndex;
+            }
             set
             {
-                _selectedQuantity = value;
+                //_selectedIndex = value;
+
+                if (this._selectedIndex == value)
+                {
+                    return;
+                }
+                _selectedIndex = value;
                 OnPropertyChanged();
+                Quantity = _selectedIndex +1 ;
+                Total= Quantity * Product.Price * (1 - DiscountPercent / 100); 
             }
         }
-
+        
         public IList<Quantity> QuantityList { get { return QuantityData.QuantityList; } }
 
         public decimal DiscountPercent => 15;
 
-        public decimal Total => Quantity * Product.Price * (1 - DiscountPercent / 100);
+       // public decimal Total => Quantity * Product.Price * (1 - DiscountPercent / 100);
+
+        private decimal _total;
+        public decimal Total
+        {
+            get
+            {
+                return _total;
+            }
+            set
+            {
+
+                _total = value;
+                OnPropertyChanged();                
+            }
+        }
+
+
     }
 }

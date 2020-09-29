@@ -6,7 +6,8 @@
              Title="Shopping Cart"
              xmlns:utility="clr-namespace:Shivonet.MobileShop.Core.Utility;assembly=Shivonet.MobileShop.Core"
              utility:ViewModelLocator.AutoWireViewModel="True"              
-             x:Class="Shivonet.MobileShop.Core.Views.ShoppingCartView">
+             x:Class="Shivonet.MobileShop.Core.Views.ShoppingCartView"
+             x:Name="ShoppingCartViewPage">
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -147,37 +148,31 @@
                                         VerticalOptions="Start">
 
 
-                                      <Picker    Title="Qty"
+                                    <Picker    Title="Qty"                                                
                                                                 TitleColor="Red"   
                                                                 Margin="10,0,24,0"                                                
                                                                 WidthRequest="90"
                                                                 HorizontalOptions="StartAndExpand" 
                                                                 HeightRequest="40"  
                                                                 ItemsSource="{Binding QuantityList}"
-                                                                ItemDisplayBinding="{Binding Name}"
-                                                                SelectedItem="{Binding SelectedQuantity}"
-                                                                SelectedIndex ="{Binding SelectedQuantity.Id}"                                            
-                                       />
-                                    
-                                      <!--<Label Text="{Binding SelectedQuantity.Name}"     HorizontalOptions="Center"  />-->
+                                                                ItemDisplayBinding="{Binding Name}"                                                                
+                                                                SelectedIndex ="{Binding SelectedIndex}"                                           
                                       
-                                        <!--<Picker x:Name="picker"
-                                    Title="Qty"
-                                    TitleColor="Red"   Margin="10,0,24,0" SelectedIndexChanged="OnPickerSelectedIndexChanged" WidthRequest="90" HorizontalOptions="StartAndExpand" HeightRequest="40"  >
-                                            <Picker.ItemsSource>
-                                                <x:Array Type="{x:Type x:String}">
-                                                    <x:String>1</x:String>
-                                                    <x:String>2</x:String>
-                                                    <x:String>3</x:String>
-                                                    <x:String>4</x:String>
-                                                    <x:String>5</x:String>
-                                                    <x:String>6</x:String>
-                                                    <x:String>7</x:String>
-                                                </x:Array>
-                                            </Picker.ItemsSource>
-                                        </Picker>-->
+                                                >
 
-                                        <Button                
+                                        <Picker.Behaviors>
+                                            <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" 
+                                                                              Command="{Binding Source={x:Reference ShoppingCartViewPage}, Path=BindingContext.PickItemCommand}"
+                                                                          
+                                                   >
+                                            </behaviors:EventToCommandBehavior>
+                                        </Picker.Behaviors>
+                                    </Picker>
+
+
+                                   
+
+                                    <Button                
                                             Margin="24,0,0,0"                
                                             CornerRadius="4"
                                             HeightRequest="32"
@@ -187,7 +182,9 @@
                                             FontSize="12"             
                                             HorizontalOptions="Center"             
                                             Text="Remove" 
-                                            BackgroundColor="Transparent"              
+                                            BackgroundColor="Transparent"  
+                                            Command="{Binding Source={x:Reference ShoppingCartViewPage}, Path=BindingContext.RemoveCommand}"
+                                           CommandParameter="{Binding}"
                                             ></Button>
 
            
@@ -231,7 +228,7 @@
                 HeightRequest="1"
                 Style="{StaticResource BoxViewStyle}" />
                               
-                                <Label Text="Purchase total" Grid.Row="2" Grid.Column="0"  Style="{StaticResource CartPageShoppingCartTileSmallBoldStyle}" ></Label>
+                                <Label Text="Purchase Total" Grid.Row="2" Grid.Column="0"  Style="{StaticResource CartPageShoppingCartTileSmallBoldStyle}" ></Label>
                                 <Label Text="Taxes" Grid.Row="3" Grid.Column="0" Style="{StaticResource CartPageShoppingCartTileSmallBoldStyle}" ></Label>
                                 <Label Text="Shipping" Grid.Row="4" Grid.Column="0"  Style="{StaticResource CartPageShoppingCartTileSmallBoldStyle}" ></Label>
                                 <Label Text="Total" Grid.Row="6" Grid.Column="0" TextColor="#333942"  Style="{StaticResource CartPageRegularStyle}" ></Label>
